@@ -8,6 +8,7 @@ package Conecction;
 
 /**
  * wenas
+ * 1er prueba
  * @author <Eduardo Orozco eduardo.orozco66@unach.mx>
  */
 public class Conecction {
