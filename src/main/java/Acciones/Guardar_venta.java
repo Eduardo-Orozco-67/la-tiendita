@@ -16,26 +16,24 @@ import java.sql.SQLException;
  *
  * @author Emili
  */
-public class Guardar_producto {    
+public class Guardar_venta {    
     Conecction c = new Conecction();
     Statement st; //Para uso de sentencia Sql
     Connection conexion;
     //Connection con = null;
     
     //Constructor de la clase 
-    public Guardar_producto(){
-        conexion = c.conectar();
+    public Guardar_venta(){
+        conexion = c.conectar(); 
     }
     
-    //Metodo que se manda a llamar para insertar datos
-    /* public int GuardarVenta(int idCombo, int barras, int cant){
-        //Sentencia de SQL para insertar los datos
-        String sql = "Call GuardarDetalle("+idCombo+", "+barras+", "+cant+");"; // "+null+"
-        boolean respuesta=true;                                                                                                                       
+    /*public boolean guardarproducto(int idcombo, int barras, int cant){
+        String sql="Call GuadarDetalle("+idcombo+","+barras+","+cant+", "+null+");";
+        boolean respuesta = true;
         try{
-            st = conexion.createStatement();
+            st=conexion.createStatement();
             respuesta=st.execute(sql);
-            System.out.println(respuesta);
+            //System.out.println(respuesta);
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,e.getMessage() );
             System.out.println(e.getMessage());
@@ -48,23 +46,27 @@ public class Guardar_producto {
             }
         }
         return !respuesta;
-    }  */  
-     
-        public int guardard(int idCombo, int barras, int cant){
-        String sql="Call GuardarDetalle("+idCombo+", "+barras+", "+cant+");";
-        int respuesta=0;
+    }*/
+    
+    
+    public boolean guardarventa(int id_cliente, String fecha, int monto_final){ 
+        String sql="insert into compra_venta (id_cliente, fecha, monto_final) values("+id_cliente+",'"+fecha+"',"+monto_final+");";
+        boolean respuesta = true;
         try{
             st=conexion.createStatement();
-            respuesta=st.executeUpdate(sql);
+            respuesta=st.execute(sql);
+            //System.out.println(respuesta);
         }catch(Exception e){
-             JOptionPane.showMessageDialog(null,e.getMessage() );
+            JOptionPane.showMessageDialog(null,e.getMessage() );
+            System.out.println(e.getMessage());
         }finally{
-            try {
+            try{
                 st.close();
-            } catch (SQLException ex) {
+            }catch(Exception ex){
                 JOptionPane.showMessageDialog(null,ex.getMessage() );
+                System.out.println(ex.getMessage());
             }
         }
-        return respuesta;
+        return !respuesta;
     }
 }

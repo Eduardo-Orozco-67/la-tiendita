@@ -11,8 +11,10 @@ package vistas;
  */
 
 import Acciones.Buscar;
+import Acciones.Guardar_venta;
 import Connection.Conecction;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 public class Venta extends javax.swing.JFrame {
 
@@ -22,6 +24,9 @@ public class Venta extends javax.swing.JFrame {
     
     Buscar busq;
     Connection c;
+    Guardar_venta guardar;
+    
+    Guardar_venta g = new Guardar_venta();
     
     public Venta(){
         initComponents();  
@@ -60,9 +65,9 @@ public class Venta extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         fechaventa = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        cancelarventa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        guardarventa = new javax.swing.JButton();
         actualizar1 = new javax.swing.JButton();
         MODIFICAR = new javax.swing.JButton();
         ticket = new javax.swing.JButton();
@@ -100,16 +105,21 @@ public class Venta extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(180, 207, 176));
         jPanel2.setForeground(new java.awt.Color(204, 255, 204));
 
-        jButton2.setText("CANCELAR");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelarventa.setText("CANCELAR");
+        cancelarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelarventaActionPerformed(evt);
             }
         });
 
         jButton1.setText("REGRESAR");
 
-        jButton3.setText("GUARDAR");
+        guardarventa.setText("GUARDAR");
+        guardarventa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarventaActionPerformed(evt);
+            }
+        });
 
         actualizar1.setText("VER VENTAS");
         actualizar1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,20 +136,20 @@ public class Venta extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jButton3)
+                    .addComponent(guardarventa)
                     .addComponent(actualizar1)
-                    .addComponent(jButton2))
+                    .addComponent(cancelarventa))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton3)
+                .addComponent(guardarventa)
                 .addGap(18, 18, 18)
                 .addComponent(actualizar1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(cancelarventa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -263,9 +273,24 @@ public class Venta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MODIFICARActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cancelarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarventaActionPerformed
         limpiar_articulos();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cancelarventaActionPerformed
+
+    private void guardarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarventaActionPerformed
+        // TODO add your handling code here:
+        String fecha = fechaventa.getText();       
+        if (!fecha.equals("")){
+            // Convertir los datos a entero para poder insertarlos
+            int montof = 0;
+            //Extraer del combo el id del cliente
+            int idCombo = Integer.parseInt((String)combotel.getSelectedItem());          
+            g.guardarventa(idCombo, fecha, montof);
+            JOptionPane.showMessageDialog(rootPane, "Venta ingresada");                   
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Ingrese una fecha");
+        }    
+    }//GEN-LAST:event_guardarventaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,11 +331,11 @@ public class Venta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MODIFICAR;
     private javax.swing.JButton actualizar1;
+    private javax.swing.JButton cancelarventa;
     private javax.swing.JComboBox<String> combotel;
     private javax.swing.JTextField fechaventa;
+    private javax.swing.JButton guardarventa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
