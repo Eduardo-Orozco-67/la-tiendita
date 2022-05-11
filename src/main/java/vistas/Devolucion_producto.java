@@ -12,23 +12,22 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+
 /**
  *
  * @author Emili
  */
-public class Agregar_Articulos extends javax.swing.JFrame {
+public class Devolucion_producto extends javax.swing.JFrame {
 
     /**
-     * Creates new form prueba
+     * Creates new form Devolucion_producto
      */
     Buscar busq;
     Guardar_venta guardar;
     Connection c;
     Conecction con = new Conecction();
     
-    Guardar_venta g = new Guardar_venta();
-    
-    public Agregar_Articulos(){
+    public Devolucion_producto(){
         initComponents();  
         c = new Conecction().conectar();
         busq = new Buscar(c);
@@ -38,17 +37,16 @@ public class Agregar_Articulos extends javax.swing.JFrame {
     }   
     
     public void limpiar_articulos(){
-        comboventaAA.removeAllItems();
-        comboventaAA.addItem("Seleccione");
+        comboventaDP.removeAllItems();
+        comboventaDP.addItem("Seleccione");
         String []barras = busq.ID_venta();
         
         for(String i:barras){
-            comboventaAA.addItem(i);
+            comboventaDP.addItem(i);
         }
-        barrasAA.setText("");
-        cantidadAA.setText("");
+        barrasDP.setText("");
+        cantidadDP.setText("");
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,20 +63,21 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaproductos = new javax.swing.JTable();
         verproductos = new javax.swing.JButton();
-        regresarAA = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        comboventaAA = new javax.swing.JComboBox<>();
-        barrasAA = new javax.swing.JTextField();
-        cantidadAA = new javax.swing.JTextField();
+        regresarT = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         mostrartotal = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        comprarAA = new javax.swing.JButton();
+        modificarDP = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        comboventaDP = new javax.swing.JComboBox<>();
+        barrasDP = new javax.swing.JTextField();
+        cantidadDP = new javax.swing.JTextField();
+        devolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,7 +85,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Elephant", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("AGREGAR PRODUCTOS");
+        jLabel1.setText("DEVOLUCION DE PRODUCTOS");
 
         jPanel2.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -131,83 +130,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        regresarAA.setText("REGRESAR");
-
-        jPanel3.setBackground(new java.awt.Color(180, 207, 176));
-
-        jPanel4.setBackground(new java.awt.Color(148, 180, 159));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("ID VENTA");
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("NUM. BARRAS");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("CANTIDAD");
-
-        comboventaAA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-        comboventaAA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboventaAAActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cantidadAA, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboventaAA, 0, 127, Short.MAX_VALUE)
-                        .addComponent(barrasAA)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboventaAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(barrasAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cantidadAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        regresarT.setText("REGRESAR");
 
         jPanel5.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -255,10 +178,93 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        comprarAA.setText("COMPRAR");
-        comprarAA.addActionListener(new java.awt.event.ActionListener() {
+        modificarDP.setText("MODIFICAR");
+        modificarDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprarAAActionPerformed(evt);
+                modificarDPActionPerformed(evt);
+            }
+        });
+
+        jPanel9.setBackground(new java.awt.Color(180, 207, 176));
+
+        jPanel10.setBackground(new java.awt.Color(148, 180, 159));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("ID VENTA");
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("NUM. BARRAS");
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("CANTIDAD");
+
+        comboventaDP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboventaDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboventaDPActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cantidadDP, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(comboventaDP, 0, 127, Short.MAX_VALUE)
+                        .addComponent(barrasDP)))
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(comboventaDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(barrasDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(cantidadDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        devolver.setText("DEVOLUCION");
+        devolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                devolverActionPerformed(evt);
             }
         });
 
@@ -269,24 +275,24 @@ public class Agregar_Articulos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(regresarAA)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(regresarT)
+                        .addGap(33, 33, 33)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(comprarAA))))
+                                .addComponent(devolver)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(modificarDP))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel1)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,19 +303,19 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comprarAA)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(modificarDP)
+                            .addComponent(devolver)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresarAA)
-                        .addGap(16, 16, 16))))
+                        .addGap(50, 50, 50)
+                        .addComponent(regresarT))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -332,69 +338,24 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboventaAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaAAActionPerformed
-        //Obtener datos de la base de datos del id venta
-        try{
-            String idcliente = comboventaAA.getSelectedItem().toString();
-            if(!idcliente.equals("Seleccione")){
-            }
-        }catch(Exception x){
-
-        }
-    }//GEN-LAST:event_comboventaAAActionPerformed
-
-    private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
-      
-        // Convertir los datos a entero para poder insertarlos
-        int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());        
-        int barras = Integer.parseInt(barrasAA.getText());
-        int cant = Integer.parseInt(cantidadAA.getText());
-        //Conexion
-        c = new Conecction().conectar();
-        //Statement t = c.getConexion();
-        PreparedStatement ps = null;
-        ResultSet rs = null;       
-        int pRes;
-       
-        try {          
-           String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
-           ps = c.prepareStatement(sql); 
-           rs = ps.executeQuery();
-           rs.next();
-           pRes = rs.getInt("pRes");
-            //Condicion para cuando ya se ha guardado el registro
-            if(pRes==0){                
-                JOptionPane.showMessageDialog(null, "Error al realizar la compra", "Error al realizar la compra", JOptionPane.ERROR_MESSAGE);
-                limpiar_articulos();
-            }else if(pRes==1){                
-                // JOptionPane.showMessageDialog(null, "Compra realizada");
-                JOptionPane.showMessageDialog(null, "Compra realizada", "Compra realizada", JOptionPane.INFORMATION_MESSAGE);
-                limpiar_articulos();
-                //Se debe mostrar el total que lleva la venta               
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage() );
-        }     
-    }//GEN-LAST:event_comprarAAActionPerformed
-
     private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
         //MOSTRAR TABLA DE LAS FOTOGRAFIAS
-         try{
+        try{
             DefaultTableModel modelado = new DefaultTableModel();
             tablaproductos.setModel(modelado);
-            
+
             //Agregar tres variables
             PreparedStatement ps = null;
-            ResultSet rs = null;            
+            ResultSet rs = null;
             //Connection con= getConection();
             c = new Conecction().conectar();
             String sql = "SELECT num_barras, nombre, anaquel, Precio, stock FROM producto order by nombre ASC;";
-            ps = c.prepareStatement(sql); 
+            ps = c.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+
             ResultSetMetaData rsMetaD = rs.getMetaData();
             int cant_columnas = rsMetaD.getColumnCount();
-            
+
             modelado.addColumn("num_barras");
             modelado.addColumn("nombre");
             modelado.addColumn("anaquel");
@@ -403,18 +364,68 @@ public class Agregar_Articulos extends javax.swing.JFrame {
 
             while(rs.next()){
                 Object[] filas = new Object[cant_columnas];
-                
+
                 for (int i = 0; i < cant_columnas; i++){
                     filas[i] = rs.getObject(i + 1);
-                    
+
                 }
                 modelado.addRow(filas);
             }
         }catch(Exception e){
             System.out.println("e");
-            
+
         }
     }//GEN-LAST:event_verproductosActionPerformed
+
+    private void modificarDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarDPActionPerformed
+
+    private void comboventaDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaDPActionPerformed
+        //Obtener datos de la base de datos del id venta
+        try{
+            String idcliente = comboventaAA.getSelectedItem().toString();
+            if(!idcliente.equals("Seleccione")){
+            }
+        }catch(Exception x){
+
+        }
+    }//GEN-LAST:event_comboventaDPActionPerformed
+
+    private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
+        // Convertir los datos a entero para poder insertarlos
+        int idCombo = Integer.parseInt((String)comboventaDP.getSelectedItem());        
+        int barras = Integer.parseInt(barrasDP.getText());
+        int cant = Integer.parseInt(cantidadDP.getText());
+        //Conexion
+        c = new Conecction().conectar();
+        //Statement t = c.getConexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;       
+        int pRes;
+       
+        try {          
+           String sql = "Call Devolucion("+idCombo+ ","+barras+","+cant+", NULL);";
+           ps = c.prepareStatement(sql); 
+           rs = ps.executeQuery();
+           rs.next();
+           pRes = rs.getInt("pRes");
+            //Condicion para cuando ya se ha guardado el registro
+            if(pRes==0){                
+                JOptionPane.showMessageDialog(null, "Error al realizar la devolucion", "Error al realizar la devolucion", JOptionPane.ERROR_MESSAGE);
+                limpiar_articulos();
+            }else if(pRes==1){                
+                // JOptionPane.showMessageDialog(null, "Compra realizada");
+                JOptionPane.showMessageDialog(null, "Devolucion realizada", "Devolucion realizada", JOptionPane.INFORMATION_MESSAGE);
+                limpiar_articulos();
+                //Se debe mostrar el total que lleva la venta               
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage() );
+        }  
+        
+        
+    }//GEN-LAST:event_devolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,44 +444,60 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Devolucion_producto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar_Articulos().setVisible(true);
+                new Devolucion_producto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField barrasAA;
+    private javax.swing.JTextField barrasAA1;
+    private javax.swing.JTextField barrasDP;
     private javax.swing.JTextField cantidadAA;
+    private javax.swing.JTextField cantidadAA1;
+    private javax.swing.JTextField cantidadDP;
     private javax.swing.JComboBox<String> comboventaAA;
-    private javax.swing.JButton comprarAA;
+    private javax.swing.JComboBox<String> comboventaAA1;
+    private javax.swing.JComboBox<String> comboventaDP;
+    private javax.swing.JButton devolver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modificarDP;
     private javax.swing.JTextField mostrartotal;
-    private javax.swing.JButton regresarAA;
+    private javax.swing.JButton regresarT;
     private javax.swing.JTable tablaproductos;
     private javax.swing.JButton verproductos;
     // End of variables declaration//GEN-END:variables

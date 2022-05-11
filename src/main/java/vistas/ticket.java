@@ -9,46 +9,30 @@ import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Connection.Conecction;
 import java.sql.*;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Emili
  */
-public class Agregar_Articulos extends javax.swing.JFrame {
+public class ticket extends javax.swing.JFrame {
 
     /**
-     * Creates new form prueba
+     * Creates new form ticket
      */
+    
     Buscar busq;
-    Guardar_venta guardar;
     Connection c;
-    Conecction con = new Conecction();
+    Guardar_venta guardar;
     
     Guardar_venta g = new Guardar_venta();
     
-    public Agregar_Articulos(){
-        initComponents();  
+    public ticket() {
+        initComponents();
         c = new Conecction().conectar();
-        busq = new Buscar(c);
         this.setResizable(false); 
         this.setLocationRelativeTo(this);
-        limpiar_articulos();
-    }   
-    
-    public void limpiar_articulos(){
-        comboventaAA.removeAllItems();
-        comboventaAA.addItem("Seleccione");
-        String []barras = busq.ID_venta();
-        
-        for(String i:barras){
-            comboventaAA.addItem(i);
-        }
-        barrasAA.setText("");
-        cantidadAA.setText("");
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,11 +53,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        comboventaAA = new javax.swing.JComboBox<>();
-        barrasAA = new javax.swing.JTextField();
-        cantidadAA = new javax.swing.JTextField();
+        comboventaT = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         mostrartotal = new javax.swing.JTextField();
@@ -86,19 +66,19 @@ public class Agregar_Articulos extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Elephant", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("AGREGAR PRODUCTOS");
+        jLabel1.setText("TICKET");
 
         jPanel2.setBackground(new java.awt.Color(180, 207, 176));
 
         tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo de barras", "Nombre", "Anaquel", "Precio", "Stock"
+                "ID venta", "Producto añadido", "Cantidad", "Num. barras", "Nombre", "Cantidad"
             }
         ));
         jScrollPane1.setViewportView(tablaproductos);
@@ -141,18 +121,10 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("ID VENTA");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("NUM. BARRAS");
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("CANTIDAD");
-
-        comboventaAA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-        comboventaAA.addActionListener(new java.awt.event.ActionListener() {
+        comboventaT.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboventaT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboventaAAActionPerformed(evt);
+                comboventaTActionPerformed(evt);
             }
         });
 
@@ -162,34 +134,19 @@ public class Agregar_Articulos extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cantidadAA, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(comboventaAA, 0, 127, Short.MAX_VALUE)
-                        .addComponent(barrasAA)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(comboventaT, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboventaAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(barrasAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(cantidadAA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(comboventaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -206,7 +163,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(180, 207, 176));
@@ -269,24 +226,23 @@ public class Agregar_Articulos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(regresarAA)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(comprarAA))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(comprarAA)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(regresarAA)
+                                .addGap(28, 28, 28)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(344, 344, 344))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,18 +254,15 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comprarAA)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(regresarAA)
-                        .addGap(16, 16, 16))))
+                        .addGap(48, 48, 48)
+                        .addComponent(regresarAA)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comprarAA)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -325,96 +278,98 @@ public class Agregar_Articulos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboventaAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaAAActionPerformed
+    private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
+        //MOSTRAR TABLA DE LAS FOTOGRAFIAS
+        try{
+            DefaultTableModel modelado = new DefaultTableModel();
+            tablaproductos.setModel(modelado);
+
+            //Agregar tres variables
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            //Extraer lo que tiene el combo
+            int nventa = Integer.parseInt((String)comboventaT.getSelectedItem());
+            //Connection con= getConection();
+            c = new Conecction().conectar();
+            String sql = "select v.id_venta, det.consecutivo, det.cantidad, pr.num_barras, pr.nombre, det.cantidad from compra_venta v INNER JOIN detalles det on v.id_venta = det.id_venta INNER JOIN producto pr on det.id_producto = pr.id_producto where v.id_venta = "+nventa+" GROUP BY  v.id_venta, det.consecutivo, det.cantidad, pr.num_barras, pr.nombre;";
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            ResultSetMetaData rsMetaD = rs.getMetaData();
+            int cant_columnas = rsMetaD.getColumnCount();
+
+            modelado.addColumn("id_venta");
+            modelado.addColumn("consecutivo");
+            modelado.addColumn("cantidad");
+            modelado.addColumn("num_barras");
+            modelado.addColumn("nombre");
+            modelado.addColumn("cantidad");
+
+            while(rs.next()){
+                Object[] filas = new Object[cant_columnas];
+
+                for (int i = 0; i < cant_columnas; i++){
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelado.addRow(filas);
+            }
+        }catch(Exception e){
+            System.out.println("e");
+
+        }
+    }//GEN-LAST:event_verproductosActionPerformed
+
+    private void comboventaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaTActionPerformed
         //Obtener datos de la base de datos del id venta
         try{
-            String idcliente = comboventaAA.getSelectedItem().toString();
+            String idcliente = comboventaT.getSelectedItem().toString();
             if(!idcliente.equals("Seleccione")){
             }
         }catch(Exception x){
 
         }
-    }//GEN-LAST:event_comboventaAAActionPerformed
+    }//GEN-LAST:event_comboventaTActionPerformed
 
     private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
-      
+
         // Convertir los datos a entero para poder insertarlos
-        int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());        
+        int idCombo = Integer.parseInt((String)comboventaT.getSelectedItem());
         int barras = Integer.parseInt(barrasAA.getText());
         int cant = Integer.parseInt(cantidadAA.getText());
         //Conexion
         c = new Conecction().conectar();
         //Statement t = c.getConexion();
         PreparedStatement ps = null;
-        ResultSet rs = null;       
+        ResultSet rs = null;
         int pRes;
-       
-        try {          
-           String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
-           ps = c.prepareStatement(sql); 
-           rs = ps.executeQuery();
-           rs.next();
-           pRes = rs.getInt("pRes");
+
+        try {
+            String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
+            ps = c.prepareStatement(sql);
+            rs = ps.executeQuery();
+            rs.next();
+            pRes = rs.getInt("pRes");
             //Condicion para cuando ya se ha guardado el registro
-            if(pRes==0){                
+            if(pRes==0){
                 JOptionPane.showMessageDialog(null, "Error al realizar la compra", "Error al realizar la compra", JOptionPane.ERROR_MESSAGE);
                 limpiar_articulos();
-            }else if(pRes==1){                
+            }else if(pRes==1){
                 // JOptionPane.showMessageDialog(null, "Compra realizada");
                 JOptionPane.showMessageDialog(null, "Compra realizada", "Compra realizada", JOptionPane.INFORMATION_MESSAGE);
                 limpiar_articulos();
-                //Se debe mostrar el total que lleva la venta               
+                //Se debe mostrar el total que lleva la venta
             }
         }catch (Exception e){
             System.out.println(e.getMessage() );
-        }     
-    }//GEN-LAST:event_comprarAAActionPerformed
-
-    private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
-        //MOSTRAR TABLA DE LAS FOTOGRAFIAS
-         try{
-            DefaultTableModel modelado = new DefaultTableModel();
-            tablaproductos.setModel(modelado);
-            
-            //Agregar tres variables
-            PreparedStatement ps = null;
-            ResultSet rs = null;            
-            //Connection con= getConection();
-            c = new Conecction().conectar();
-            String sql = "SELECT num_barras, nombre, anaquel, Precio, stock FROM producto order by nombre ASC;";
-            ps = c.prepareStatement(sql); 
-            rs = ps.executeQuery();
-            
-            ResultSetMetaData rsMetaD = rs.getMetaData();
-            int cant_columnas = rsMetaD.getColumnCount();
-            
-            modelado.addColumn("num_barras");
-            modelado.addColumn("nombre");
-            modelado.addColumn("anaquel");
-            modelado.addColumn("Precio");
-            modelado.addColumn("stock");
-
-            while(rs.next()){
-                Object[] filas = new Object[cant_columnas];
-                
-                for (int i = 0; i < cant_columnas; i++){
-                    filas[i] = rs.getObject(i + 1);
-                    
-                }
-                modelado.addRow(filas);
-            }
-        }catch(Exception e){
-            System.out.println("e");
-            
         }
-    }//GEN-LAST:event_verproductosActionPerformed
+    }//GEN-LAST:event_comprarAAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -433,34 +388,29 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ticket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ticket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ticket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agregar_Articulos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ticket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar_Articulos().setVisible(true);
+                new ticket().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField barrasAA;
-    private javax.swing.JTextField cantidadAA;
-    private javax.swing.JComboBox<String> comboventaAA;
+    private javax.swing.JComboBox<String> comboventaT;
     private javax.swing.JButton comprarAA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
