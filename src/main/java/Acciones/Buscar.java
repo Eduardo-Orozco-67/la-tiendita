@@ -69,7 +69,7 @@ public class Buscar {
            res=st.executeQuery(sql);
            res.last();
            int filas = res.getRow();
-           res.beforeFirst();
+           res.beforeFirst(); 
            x = new String[filas];
            filas = 0;
            while(res.next()){

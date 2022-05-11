@@ -6,8 +6,10 @@
 package vistas;
 
 import Acciones.Buscar;
+import Acciones.Guardar_producto;
 import Connection.Conecction;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +22,9 @@ public class Agregar_Articulos extends javax.swing.JFrame {
      * Creates new form prueba
      */
     Buscar busq;
+    Guardar_producto guardar;
     Connection c;
+    Conecction con = new Conecction();
     
     public Agregar_Articulos(){
         initComponents();  
@@ -338,7 +342,42 @@ public class Agregar_Articulos extends javax.swing.JFrame {
     }//GEN-LAST:event_comboventaAAActionPerformed
 
     private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
-        // TODO add your handling code here:
+    
+        // Convertir los datos a entero para poder insertarlos
+        int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());        
+        int barras = Integer.parseInt(barrasAA.getText());
+        int cant = Integer.parseInt(cantidadAA.getText());
+        //Conexion
+        c = new Conecction().conectar();
+        //Statement t = c.getConexion();
+        PreparedStatement ps = null;
+        ResultSet rs = null;       
+        int pRes;
+       
+        try {          
+           String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
+           ps = c.prepareStatement(sql); 
+           rs = ps.executeQuery();
+           rs.next();
+           pRes = rs.getInt("pRes");
+            //Condicion para cuando ya se ha guardado el registro
+            if(pRes==0){                
+                JOptionPane.showMessageDialog(null, "Error al realizar la compra", "Error al realizar la compra", JOptionPane.ERROR_MESSAGE);
+            }else if(pRes==1){                
+               // JOptionPane.showMessageDialog(null, "Compra realizada");
+                JOptionPane.showMessageDialog(null, "Compra realizada", "Compra realizada", JOptionPane.INFORMATION_MESSAGE);
+                //Se debe mostrar el total que lleva la venta
+                
+                
+                
+                
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage() );
+        }      
+        
+        
+        
     }//GEN-LAST:event_comprarAAActionPerformed
 
     private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
