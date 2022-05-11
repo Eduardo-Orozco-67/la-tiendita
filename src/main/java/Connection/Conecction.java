@@ -35,6 +35,11 @@ public class Conecction {
         }
         return con;
     }
+    
+    public Statement getConexion(){
+        Statement stmt =null;
+        return stmt;
+    }
 
     public static void main(String args[]) throws SQLException {
         Conecction c = new Conecction();
