@@ -11,6 +11,8 @@ package Acciones;
  */
 
 import Connection.Conecction;
+import getterSetter.getterSetter;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -88,4 +90,35 @@ public class Buscar {
         }
         return x;
     }
+    
+    
+    public void insertarClientes(String nombre,String rfc,int telefono,String direccion)
+    {
+        try{
+            st=conexion.createStatement();
+            String sql="insert into cliente(nombre, RFC, telefono, direccion) values('"+nombre+"', '"+rfc+"', '"+telefono+"', '"+direccion+"');";
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Registro fallido");
+        }
+    }
+       
+    public void eliminarClientes(int ID_cliente)
+    {
+        try{
+            st=conexion.createStatement();
+            String sql= "Delete from cliente where id_cliente = '"+ID_cliente+"' ";
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Eliminacion fallida");
+        }
+    }
+    
+    
 }
