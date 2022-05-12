@@ -12,11 +12,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author erwin.bermudez
- */
+
 public class modificar {
+
+
+  
     Connection conexion;
     Conecction c = new Conecction();
     Statement st;
