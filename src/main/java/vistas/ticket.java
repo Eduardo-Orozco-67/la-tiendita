@@ -24,15 +24,30 @@ public class ticket extends javax.swing.JFrame {
     Buscar busq;
     Connection c;
     Guardar_venta guardar;
-    
+    Conecction con = new Conecction();
     Guardar_venta g = new Guardar_venta();
     
     public ticket() {
         initComponents();
         c = new Conecction().conectar();
+        busq = new Buscar(c);
         this.setResizable(false); 
         this.setLocationRelativeTo(this);
     }
+    
+    public void limpiar_articulos(){
+        comboventaT.removeAllItems();
+        comboventaT.addItem("Seleccione");
+        String []barras = busq.ID_venta();
+        
+        for(String i:barras){
+            comboventaT.addItem(i);
+        }
+        //barrasAA.setText("");
+        //cantidadAA.setText("");
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -132,21 +147,21 @@ public class ticket extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(comboventaT, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGap(42, 42, 42)
+                .addComponent(comboventaT, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(comboventaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -163,7 +178,7 @@ public class ticket extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(180, 207, 176));
@@ -286,7 +301,7 @@ public class ticket extends javax.swing.JFrame {
 
     private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
         //MOSTRAR TABLA DE LAS FOTOGRAFIAS
-        try{
+        /*try{
             DefaultTableModel modelado = new DefaultTableModel();
             tablaproductos.setModel(modelado);
 
@@ -323,8 +338,12 @@ public class ticket extends javax.swing.JFrame {
         }catch(Exception e){
             System.out.println("e");
 
-        }
+        }*/
     }//GEN-LAST:event_verproductosActionPerformed
+
+    private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
+
+    }//GEN-LAST:event_comprarAAActionPerformed
 
     private void comboventaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaTActionPerformed
         //Obtener datos de la base de datos del id venta
@@ -336,40 +355,6 @@ public class ticket extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_comboventaTActionPerformed
-
-    private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
-
-        // Convertir los datos a entero para poder insertarlos
-        int idCombo = Integer.parseInt((String)comboventaT.getSelectedItem());
-        int barras = Integer.parseInt(barrasAA.getText());
-        int cant = Integer.parseInt(cantidadAA.getText());
-        //Conexion
-        c = new Conecction().conectar();
-        //Statement t = c.getConexion();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        int pRes;
-
-        try {
-            String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
-            ps = c.prepareStatement(sql);
-            rs = ps.executeQuery();
-            rs.next();
-            pRes = rs.getInt("pRes");
-            //Condicion para cuando ya se ha guardado el registro
-            if(pRes==0){
-                JOptionPane.showMessageDialog(null, "Error al realizar la compra", "Error al realizar la compra", JOptionPane.ERROR_MESSAGE);
-                limpiar_articulos();
-            }else if(pRes==1){
-                // JOptionPane.showMessageDialog(null, "Compra realizada");
-                JOptionPane.showMessageDialog(null, "Compra realizada", "Compra realizada", JOptionPane.INFORMATION_MESSAGE);
-                limpiar_articulos();
-                //Se debe mostrar el total que lleva la venta
-            }
-        }catch (Exception e){
-            System.out.println(e.getMessage() );
-        }
-    }//GEN-LAST:event_comprarAAActionPerformed
 
     /**
      * @param args the command line arguments
