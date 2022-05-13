@@ -62,9 +62,9 @@ public class pruebaboron extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        verproductos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaproductos = new javax.swing.JTable();
-        verproductos = new javax.swing.JButton();
         regresarAA = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -86,25 +86,25 @@ public class pruebaboron extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(180, 207, 176));
 
-        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Codigo de barras", "Nombre", "Anaquel", "Precio", "Stock"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaproductos);
-
         verproductos.setText("VER PRODUCTOS");
         verproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verproductosActionPerformed(evt);
             }
         });
+
+        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID venta", "Producto añadido", "Cantidad", "Num. barras", "Nombre", "Cantidad"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaproductos);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,16 +113,16 @@ public class pruebaboron extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(verproductos)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(verproductos))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(verproductos)
                 .addContainerGap())
         );
@@ -228,7 +228,7 @@ public class pruebaboron extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        comprarAA.setText("COMPRAR");
+        comprarAA.setText("TOTAL");
         comprarAA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comprarAAActionPerformed(evt);
@@ -247,15 +247,15 @@ public class pruebaboron extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(regresarAA)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(480, 480, 480)
-                                .addComponent(comprarAA))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(comprarAA)
+                                .addGap(62, 62, 62))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -272,11 +272,11 @@ public class pruebaboron extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comprarAA)
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(regresarAA)
@@ -306,12 +306,14 @@ public class pruebaboron extends javax.swing.JFrame {
     private void comboventaprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaprActionPerformed
         //Obtener datos de la base de datos del id venta
         try {
-            String idcliente = comboventapr.getSelectedItem().toString();
-            if (!idcliente.equals("Seleccione")) {
+            String idventa = comboventapr.getSelectedItem().toString();
+            if (!idventa.equals("Seleccione")) {
+                String datos [] = busq.vermonto(idventa);
+                mostrartotal.setText(datos[0]);                
             }
         } catch (Exception x) {
 
-        }
+        }        
     }//GEN-LAST:event_comboventaprActionPerformed
 
     private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
@@ -319,24 +321,27 @@ public class pruebaboron extends javax.swing.JFrame {
         try{
             DefaultTableModel modelado = new DefaultTableModel();
             tablaproductos.setModel(modelado);
-
+            
+            //Extraer el id de la venta desde el combo 
+            int venta = Integer.parseInt((String)comboventapr.getSelectedItem());
             //Agregar tres variables
-            PreparedStatement ps = null;
+            PreparedStatement ps = null;  
             ResultSet rs = null;
             //Connection con= getConection();
             c = new Conecction().conectar();
-            String sql = "SELECT num_barras, nombre, anaquel, Precio, stock FROM producto order by nombre ASC;";
-            ps = c.prepareStatement(sql);
+            String sql = "select v.id_venta, det.consecutivo, det.cantidad, pr.num_barras, pr.nombre, det.cantidad from compra_venta v INNER JOIN detalles det on v.id_venta = det.id_venta INNER JOIN producto pr on det.id_producto = pr.id_producto where v.id_venta = "+venta+" GROUP BY  v.id_venta, det.consecutivo, det.cantidad, pr.num_barras, pr.nombre;";
+            ps = c.prepareStatement(sql); 
             rs = ps.executeQuery();
-
+            
             ResultSetMetaData rsMetaD = rs.getMetaData();
             int cant_columnas = rsMetaD.getColumnCount();
-
+            
+            modelado.addColumn("id_venta");
+            modelado.addColumn("consecutivo");
+            modelado.addColumn("cantidad");
             modelado.addColumn("num_barras");
             modelado.addColumn("nombre");
-            modelado.addColumn("anaquel");
-            modelado.addColumn("Precio");
-            modelado.addColumn("stock");
+            modelado.addColumn("cantidad");
 
             while(rs.next()){
                 Object[] filas = new Object[cant_columnas];
@@ -356,7 +361,7 @@ public class pruebaboron extends javax.swing.JFrame {
     private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
 
         // Convertir los datos a entero para poder insertarlos
-        int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());
+       /* int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());
         int barras = Integer.parseInt(barrasAA.getText());
         int cant = Integer.parseInt(cantidadAA.getText());
         //Conexion
@@ -384,7 +389,7 @@ public class pruebaboron extends javax.swing.JFrame {
             }
         }catch (Exception e){
             System.out.println(e.getMessage() );
-        }
+        }*/
     }//GEN-LAST:event_comprarAAActionPerformed
 
     /**
