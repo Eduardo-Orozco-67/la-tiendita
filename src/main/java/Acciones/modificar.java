@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author erwin.bermudez
+ * @author Emili
  */
 public class modificar {
     Connection conexion;

@@ -345,14 +345,16 @@ public class Agregar_Articulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboventaAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaAAActionPerformed
-        //Obtener datos de la base de datos del id venta
-        try{
-            String idcliente = comboventaAA.getSelectedItem().toString();
-            if(!idcliente.equals("Seleccione")){
+        //Obtener datos de la base de datos del id venta              
+        try {
+            String idventa = comboventaAA.getSelectedItem().toString();
+            if (!idventa.equals("Seleccione")) {
+                String datos [] = busq.vermonto(idventa);
+                mostrartotal.setText(datos[0]);                 
             }
-        }catch(Exception x){
+        } catch (Exception x) {
 
-        }
+        }    
     }//GEN-LAST:event_comboventaAAActionPerformed
 
     private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed

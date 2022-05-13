@@ -13,8 +13,15 @@ package vistas;
 import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Connection.Conecction;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
+
+import vistas.Ver_Ventas;
+import vistas.Agregar_Articulos;
+import vistas.Devolucion_producto;
+import vistas.ticket;
 
 public class Venta extends javax.swing.JFrame {
 
@@ -25,6 +32,11 @@ public class Venta extends javax.swing.JFrame {
     Buscar busq;
     Connection c;
     Guardar_venta guardar;
+
+    Ver_Ventas verv = new Ver_Ventas();
+    Agregar_Articulos agre = new Agregar_Articulos();
+    Devolucion_producto devol = new Devolucion_producto();
+    ticket tick = new ticket();
     
     Guardar_venta g = new Guardar_venta();
     
@@ -72,7 +84,7 @@ public class Venta extends javax.swing.JFrame {
         MODIFICAR = new javax.swing.JButton();
         ticket = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(229, 227, 201));
 
@@ -163,6 +175,11 @@ public class Venta extends javax.swing.JFrame {
         });
 
         ticket.setText("TICKET");
+        ticket.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ticketActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -252,10 +269,68 @@ public class Venta extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(evt.getSource() == jButton4)
+        {
+            guardarventa.setEnabled(false);
+            actualizar1.setEnabled(false);
+            cancelarventa.setEnabled(false);
+            jButton1.setEnabled(false);
+            jButton4.setEnabled(false);
+            MODIFICAR.setEnabled(false);
+            ticket.setEnabled(false);            
+            combotel.setEnabled(false);
+            fechaventa.setEnabled(false);
+            
+            agre.setVisible(true);            
+            
+            agre.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
+           });
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar1ActionPerformed
         // TODO add your handling code here:
+        if(evt.getSource() == actualizar1)
+        {
+            guardarventa.setEnabled(false);
+            actualizar1.setEnabled(false);
+            cancelarventa.setEnabled(false);
+            jButton1.setEnabled(false);
+            jButton4.setEnabled(false);
+            MODIFICAR.setEnabled(false);
+            ticket.setEnabled(false);            
+            combotel.setEnabled(false);
+            fechaventa.setEnabled(false);
+            
+            verv.setVisible(true);            
+            
+            verv.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
+           });
+        }
     }//GEN-LAST:event_actualizar1ActionPerformed
 
     private void combotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combotelActionPerformed
@@ -271,6 +346,35 @@ public class Venta extends javax.swing.JFrame {
 
     private void MODIFICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MODIFICARActionPerformed
         // TODO add your handling code here:
+        if(evt.getSource() == MODIFICAR)
+        {
+            guardarventa.setEnabled(false);
+            actualizar1.setEnabled(false);
+            cancelarventa.setEnabled(false);
+            jButton1.setEnabled(false);
+            jButton4.setEnabled(false);
+            MODIFICAR.setEnabled(false);
+            ticket.setEnabled(false);            
+            combotel.setEnabled(false);
+            fechaventa.setEnabled(false);
+            
+            devol.setVisible(true);            
+            
+            devol.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
+           });
+        }
     }//GEN-LAST:event_MODIFICARActionPerformed
 
     private void cancelarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarventaActionPerformed
@@ -291,6 +395,39 @@ public class Venta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingrese una fecha");
         }    
     }//GEN-LAST:event_guardarventaActionPerformed
+
+    private void ticketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ticketActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == ticket)
+        {
+            guardarventa.setEnabled(false);
+            actualizar1.setEnabled(false);
+            cancelarventa.setEnabled(false);
+            jButton1.setEnabled(false);
+            jButton4.setEnabled(false);
+            MODIFICAR.setEnabled(false);
+            ticket.setEnabled(false);            
+            combotel.setEnabled(false);
+            fechaventa.setEnabled(false);
+            
+            tick.setVisible(true);            
+            
+            tick.addWindowListener(new WindowAdapter(){
+               @Override
+                public void windowClosing(WindowEvent we){
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+                }
+           });
+        }        
+    }//GEN-LAST:event_ticketActionPerformed
 
     /**
      * @param args the command line arguments
