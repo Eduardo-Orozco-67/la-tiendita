@@ -20,7 +20,7 @@ public class Conecction {
     //variables para guardar los datos de acceso a la bd
     private final String url = "jdbc:postgresql://localhost:5432/la_tiendita";
     private final String usuario = "postgres";
-    private final String contraseña = "1234";
+    private final String contraseña = "samuel117";
 
     //metodo para conectar la bd, es una clase de tipo Connection 
     public Connection conectar() {
