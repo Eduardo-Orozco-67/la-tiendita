@@ -34,7 +34,7 @@ public class Buscar {
         this.conexion = conexion;
     }
     
-     public String [] ID_cliente(){
+    public String [] ID_cliente(){
         String sql = "select id_cliente from cliente order by id_cliente ASC;";
         String []x = new String[1];
         try{
@@ -118,6 +118,28 @@ public class Buscar {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Eliminacion fallida");
         }
+    }
+    
+    public String[] vermonto(String id_venta){        
+        String sql = " select monto_final from compra_venta where id_venta = "+id_venta+";";
+        String []x=new String[3];
+        try{
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("monto_final");               
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
     }
     
     
