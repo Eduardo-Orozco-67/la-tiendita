@@ -356,9 +356,9 @@ public class pruebaboron extends javax.swing.JFrame {
     private void comprarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarAAActionPerformed
 
         // Convertir los datos a entero para poder insertarlos
-        int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());
-        int barras = Integer.parseInt(barrasAA.getText());
-        int cant = Integer.parseInt(cantidadAA.getText());
+        //int idCombo = Integer.parseInt((String)comboventaAA.getSelectedItem());
+        //int barras = Integer.parseInt(barrasAA.getText());
+        //int cant = Integer.parseInt(cantidadAA.getText());
         //Conexion
         c = new Conecction().conectar();
         //Statement t = c.getConexion();
@@ -367,8 +367,8 @@ public class pruebaboron extends javax.swing.JFrame {
         int pRes;
 
         try {
-            String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
-            ps = c.prepareStatement(sql);
+            //String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
+            //ps = c.prepareStatement(sql);
             rs = ps.executeQuery();
             rs.next();
             pRes = rs.getInt("pRes");
