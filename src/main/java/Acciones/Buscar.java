@@ -139,5 +139,33 @@ public class Buscar {
         return x;
     }
     
+    //BiPO 
+    //Busqueda de la categoría
+    public void mostrar(String nombre_c) {
+        try {
+    java.sql.Statement st;
+    ResultSet rs;
+    getterSetter var = new getterSetter();
+
+            st = conexion.createStatement();
+            String sql = "select * from categoria where nombre='" + nombre_c + "';";
+            rs = st.executeQuery(sql);
+            if (rs.next()) {
+                var.setId_categoria(rs.getInt("ID_Categoria"));
+                var.setNombre_c(rs.getString("Nombre"));
+                var.setDescripcion(rs.getString("Descripcion"));
+            } else {
+                var.setId_categoria(0);
+                var.setNombre("");
+                var.setDescripcion("");
+                JOptionPane.showMessageDialog(null, "no se encontro registro", "sin registro", JOptionPane.INFORMATION_MESSAGE);
+            }
+            st.close();
+            conexion.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error en programa " + e, "Error de sistema", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
 }
