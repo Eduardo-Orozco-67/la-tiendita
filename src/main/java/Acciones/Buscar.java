@@ -5,6 +5,11 @@
  */
 package Acciones;
 
+/**
+ *
+ * @author Emili
+ */
+
 import Connection.Conecction;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -82,32 +87,5 @@ public class Buscar {
             }
         }
         return x;
-    }
-
-    public void mostrar(String categorias) {
-        try {
-    java.sql.Statement st;
-    ResultSet rs;
-    GettersSetter var = new GetterSetter();
-
-            st = conexion.createStatement();
-            String sql = "select * from categoria where categoria='" + categorias + "';";
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                var.setID_Categoria(rs.getInt("ID_Categoria"));
-                var.setNombre(rs.getString("Nombre"));
-                var.setPrecio(rs.getString("Descripcion"));
-            } else {
-                var.setID_Categoria("");
-                var.setNombre("");
-                var.setDescripcion("");
-                JOptionPane.showMessageDialog(null, "no se encontro registro", "sin registro", JOptionPane.INFORMATION_MESSAGE);
-            }
-            st.close();
-            conexion.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error en programa " + e, "Erro de sistema", JOptionPane.ERROR_MESSAGE);
-        }
     }
 }

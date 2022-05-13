@@ -69,20 +69,4 @@ public class Guardar_venta {
         }
         return !respuesta;
     }
-       public void insertar_Categoria(int ID_Categoria, String Nombre, String Descripcion)
-    {
-         try {
-            
-            st = conexion.createStatement();
-            String sql = "insert into CDB (nombre, descripcion) values('" + Nombre + "','" + Descripcion + "');";
-            st.execute(sql);
-            st.close();
-            conexion.close();
-            
-            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-        }
-         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 }
