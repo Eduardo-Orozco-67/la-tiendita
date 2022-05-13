@@ -9,12 +9,14 @@ import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Acciones.eliminar;
 import Connection.Conecction;
+import Acciones.modificar;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class VistaClientes extends javax.swing.JFrame {
 
     Guardar_venta me = new Guardar_venta();
+    modificar met = new modificar();
     eliminar el = new eliminar();
     /**
      * Creates new form VistaClientes
@@ -31,6 +33,7 @@ public class VistaClientes extends javax.swing.JFrame {
         this.setResizable(false); 
         this.setLocationRelativeTo(this);
         limpiar_articulos();
+        limpiar_articulos2();
     }
     
     public void limpiar_articulos(){
@@ -48,6 +51,21 @@ public class VistaClientes extends javax.swing.JFrame {
         TxtTelefono1.setText("");
         TxtDireccion1.setText("");
     }
+    
+    public void limpiar_articulos2(){
+        comboModificar.removeAllItems();
+        comboModificar.addItem("Seleccione");
+        String []barras = busq.verRfc();
+        
+        for(String i:barras){
+            comboModificar.addItem(i);
+            contador++;
+        }
+        
+        TxtNombre2.setText("");
+        TxtTelefono2.setText("");
+        TxtDireccion2.setText("");
+    }
 
     public void limpiar()
     {
@@ -59,11 +77,17 @@ public class VistaClientes extends javax.swing.JFrame {
     
     public void limpiar2()
     {
-        //ComboCliente.setSelectedItem("Seleccionar");
         TxtNombre1.setText("");
         TxtRfc1.setText("");
         TxtTelefono1.setText("");
         TxtDireccion1.setText("");
+    }
+    
+    public void Limpiar4()
+    {
+        TxtNombre2.setText("");
+        TxtTelefono2.setText("");
+        TxtDireccion2.setText("");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,6 +134,17 @@ public class VistaClientes extends javax.swing.JFrame {
         Btnlimpiar3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        comboModificar = new javax.swing.JComboBox<>();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        TxtNombre2 = new javax.swing.JTextField();
+        TxtTelefono2 = new javax.swing.JTextField();
+        TxtDireccion2 = new javax.swing.JTextField();
+        BtnModificar = new javax.swing.JButton();
+        Limpiar4 = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -417,13 +452,100 @@ public class VistaClientes extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("MODIFICAR CLIENTE");
 
+        comboModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboModificarActionPerformed(evt);
+            }
+        });
+
+        jPanel6.setBackground(new java.awt.Color(180, 207, 176));
+
+        jLabel16.setText("Nombre:");
+
+        jLabel18.setText("Telefono:");
+
+        jLabel19.setText("Direccion:");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtTelefono2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtDireccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(TxtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(TxtTelefono2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(TxtDireccion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        BtnModificar.setText("Modificar");
+        BtnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarActionPerformed(evt);
+            }
+        });
+
+        Limpiar4.setText("Limpiar");
+        Limpiar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Limpiar4ActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("RFC:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel14)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel17)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(BtnModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(Limpiar4)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -431,7 +553,17 @@ public class VistaClientes extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(comboModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnModificar)
+                    .addComponent(Limpiar4))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel4);
@@ -463,7 +595,7 @@ public class VistaClientes extends javax.swing.JFrame {
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
         //Boton guardar
         
-        if(TxtNombre.getText().equals("") || TxtRfc.getText().equals("") || TxtRfc.getText().equals("") || TxtDireccion.getText().equals(""))
+        if(TxtNombre.getText().equals("") || TxtRfc.getText().equals("") || TxtTelefono.getText().equals("") || TxtDireccion.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         }else
@@ -547,6 +679,43 @@ public class VistaClientes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BtnEliminarActionPerformed
 
+    private void Limpiar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Limpiar4ActionPerformed
+        Limpiar4();
+    }//GEN-LAST:event_Limpiar4ActionPerformed
+
+    private void comboModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboModificarActionPerformed
+        
+        try{                       
+            String rfc = comboModificar.getSelectedItem().toString();
+        if(!rfc.equals("Seleccione")){
+            String datos [] = busq.verCliente2(rfc);
+            TxtNombre2.setText(datos[0]);
+            TxtTelefono2.setText(datos[1]);
+            TxtDireccion2.setText(datos[2]);
+        }
+        }catch(Exception x)
+        {
+        }
+        
+    }//GEN-LAST:event_comboModificarActionPerformed
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        //Boton de modificar
+        if(TxtNombre2.getText().equals("") || TxtTelefono2.getText().equals("") || TxtDireccion2.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+        }else
+        {
+            String rfc = comboModificar.getSelectedItem().toString();
+            int Telefono = Integer.parseInt(TxtTelefono2.getText());
+            String Nombre = TxtNombre2.getText();
+            String Direccion = TxtDireccion2.getText();
+            
+            met.modificarCliente(Nombre, Telefono, Direccion, rfc);
+            limpiar_articulos2();
+        }
+    }//GEN-LAST:event_BtnModificarActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -588,23 +757,33 @@ public class VistaClientes extends javax.swing.JFrame {
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JButton BtnLimpiar;
     private javax.swing.JButton BtnLimpiar2;
+    private javax.swing.JButton BtnModificar;
     private javax.swing.JButton Btnlimpiar3;
+    private javax.swing.JButton Limpiar4;
     private javax.swing.JTextField TxtDireccion;
     private javax.swing.JTextField TxtDireccion1;
+    private javax.swing.JTextField TxtDireccion2;
     private javax.swing.JTextField TxtEliminarID;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtNombre1;
+    private javax.swing.JTextField TxtNombre2;
     private javax.swing.JTextField TxtRfc;
     private javax.swing.JTextField TxtRfc1;
     private javax.swing.JTextField TxtTelefono;
     private javax.swing.JTextField TxtTelefono1;
+    private javax.swing.JTextField TxtTelefono2;
     private javax.swing.JComboBox<String> comboCliente;
+    private javax.swing.JComboBox<String> comboModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -618,6 +797,7 @@ public class VistaClientes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

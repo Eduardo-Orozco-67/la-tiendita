@@ -44,4 +44,23 @@ public class modificar {
         return respuesta;
     }
       
+      
+      
+      public void modificarCliente(String nombre, int telefono, String direccion, String rfc)
+      {
+        try
+        {
+            st=conexion.createStatement();
+            String sql ="update cliente set nombre ='"+nombre+"', telefono = '"+telefono+"', direccion = '"+direccion+"' where rfc = '"+rfc+"';";//Sentencia sql
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Modificacion exitosa");
+            
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+      }
+      
 }
