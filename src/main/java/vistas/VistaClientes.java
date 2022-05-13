@@ -6,19 +6,23 @@
 package vistas;
 
 import Acciones.Buscar;
+import Acciones.Guardar_venta;
+import Acciones.eliminar;
 import Connection.Conecction;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class VistaClientes extends javax.swing.JFrame {
 
-    Buscar me = new Buscar();
+    Guardar_venta me = new Guardar_venta();
+    eliminar el = new eliminar();
     /**
      * Creates new form VistaClientes
      */
     
     Buscar busq;
     Connection c;
+    int contador=0;
     
     public VistaClientes() {
         initComponents();
@@ -36,7 +40,9 @@ public class VistaClientes extends javax.swing.JFrame {
         
         for(String i:barras){
             comboCliente.addItem(i);
+            contador++;
         }
+        
         TxtNombre1.setText("");
         TxtRfc1.setText("");
         TxtTelefono1.setText("");
@@ -103,6 +109,7 @@ public class VistaClientes extends javax.swing.JFrame {
         BtnEliminar = new javax.swing.JButton();
         Btnlimpiar3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -406,15 +413,25 @@ public class VistaClientes extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(229, 227, 201));
 
+        jLabel14.setFont(new java.awt.Font("Elephant", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel14.setText("MODIFICAR CLIENTE");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel14)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 361, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel14)
+                .addContainerGap(319, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar", jPanel4);
@@ -455,11 +472,11 @@ public class VistaClientes extends javax.swing.JFrame {
             String Nombre = TxtNombre.getText();
             String RFC = TxtRfc.getText();
             String Direccion = TxtDireccion.getText();
-            me.insertarClientes(Nombre, RFC, Telefono, Direccion);
+            me.guardarClientes(Nombre, RFC, Telefono, Direccion);
             limpiar();
            
         }
-            
+ 
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -474,11 +491,40 @@ public class VistaClientes extends javax.swing.JFrame {
        
         try{                       
             String idcliente = comboCliente.getSelectedItem().toString();
-        if(!idcliente.equals("Seleccione")){             
+        if(!idcliente.equals("Seleccione")){
+            String datos [] = busq.verCliente(idcliente);
+            TxtNombre1.setText(datos[0]);
+            TxtRfc1.setText(datos[1]);
+            TxtTelefono1.setText(datos[2]);
+            TxtDireccion1.setText(datos[3]);
         }
-        }catch(Exception x){
+        }catch(Exception x)
+        {
+        }
+        
+        /*
+        try
+        {
+            if(this.contador>0){
+            c = new Conecction().conectar();
+            Statement t = c.createStatement();
+            ResultSet r1 = t.executeQuery("Select * from cliente where id_cliente = '"+comboCliente.getSelectedItem()+"' ");
+            r1.next();
+            TxtNombre1.setText(String.valueOf(r1.getString("nombre")));
+            TxtRfc1.setText(String.valueOf(r1.getString("rfc")));
+            TxtTelefono1.setText(String.valueOf(r1.getInt("telefono")));
+            TxtDireccion1.setText(String.valueOf(r1.getString("direccion")));
+                
+            }
             
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
         }
+        
+        */
+           
+        
+        
     }//GEN-LAST:event_comboClienteActionPerformed
 
     private void Btnlimpiar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btnlimpiar3ActionPerformed
@@ -494,7 +540,7 @@ public class VistaClientes extends javax.swing.JFrame {
         {
             int ID = Integer.parseInt(TxtEliminarID.getText());
             
-            me.eliminarClientes(ID);
+            el.eliminarClientes(ID);
             TxtEliminarID.setText("");
            
         }
@@ -558,6 +604,7 @@ public class VistaClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
