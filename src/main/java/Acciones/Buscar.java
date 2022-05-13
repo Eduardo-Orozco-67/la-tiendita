@@ -90,34 +90,31 @@ public class Buscar {
         }
         return x;
     }
-    
-    
-    public void insertarClientes(String nombre,String rfc,int telefono,String direccion)
-    {
+      
+     public String [] verCliente(String id_cliente){
+        String sql = "select * from cliente where id_cliente = "+id_cliente+" ;";      
+        String []x = new String[4];
         try{
-            st=conexion.createStatement();
-            String sql="insert into cliente(nombre, RFC, telefono, direccion) values('"+nombre+"', '"+rfc+"', '"+telefono+"', '"+direccion+"');";
-            st.execute(sql);
-            st.close();
-            JOptionPane.showMessageDialog(null, "Registro exitoso");
-            
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("nombre");
+               x[1]=res.getString("rfc");
+               x[2]=res.getString("telefono");
+               x[3]=res.getString("direccion");
+           }  
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Registro fallido");
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
         }
-    }
-       
-    public void eliminarClientes(int ID_cliente)
-    {
-        try{
-            st=conexion.createStatement();
-            String sql= "Delete from cliente where id_cliente = '"+ID_cliente+"' ";
-            st.execute(sql);
-            st.close();
-            JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
-            
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Eliminacion fallida");
-        }
+        return x;
     }
     
     

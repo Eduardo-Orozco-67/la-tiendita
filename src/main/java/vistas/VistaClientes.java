@@ -6,13 +6,16 @@
 package vistas;
 
 import Acciones.Buscar;
+import Acciones.Guardar_venta;
+import Acciones.eliminar;
 import Connection.Conecction;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class VistaClientes extends javax.swing.JFrame {
 
-    Buscar me = new Buscar();
+    Guardar_venta me = new Guardar_venta();
+    eliminar el = new eliminar();
     /**
      * Creates new form VistaClientes
      */
@@ -469,11 +472,11 @@ public class VistaClientes extends javax.swing.JFrame {
             String Nombre = TxtNombre.getText();
             String RFC = TxtRfc.getText();
             String Direccion = TxtDireccion.getText();
-            me.insertarClientes(Nombre, RFC, Telefono, Direccion);
+            me.guardarClientes(Nombre, RFC, Telefono, Direccion);
             limpiar();
            
         }
-            
+ 
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -488,13 +491,18 @@ public class VistaClientes extends javax.swing.JFrame {
        
         try{                       
             String idcliente = comboCliente.getSelectedItem().toString();
-        if(!idcliente.equals("Seleccione")){             
+        if(!idcliente.equals("Seleccione")){
+            String datos [] = busq.verCliente(idcliente);
+            TxtNombre1.setText(datos[0]);
+            TxtRfc1.setText(datos[1]);
+            TxtTelefono1.setText(datos[2]);
+            TxtDireccion1.setText(datos[3]);
         }
         }catch(Exception x)
         {
         }
         
-        
+        /*
         try
         {
             if(this.contador>0){
@@ -513,6 +521,9 @@ public class VistaClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         
+        */
+           
+        
         
     }//GEN-LAST:event_comboClienteActionPerformed
 
@@ -529,7 +540,7 @@ public class VistaClientes extends javax.swing.JFrame {
         {
             int ID = Integer.parseInt(TxtEliminarID.getText());
             
-            me.eliminarClientes(ID);
+            el.eliminarClientes(ID);
             TxtEliminarID.setText("");
            
         }
