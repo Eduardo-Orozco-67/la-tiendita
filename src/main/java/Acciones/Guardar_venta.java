@@ -69,4 +69,21 @@ public class Guardar_venta {
         }
         return !respuesta;
     }
+    
+    public void guardarClientes(String nombre,String rfc,int telefono,String direccion)
+    {
+        try{
+            st=conexion.createStatement();
+            String sql="insert into cliente(nombre, RFC, telefono, direccion) values('"+nombre+"', '"+rfc+"', '"+telefono+"', '"+direccion+"');";
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Registro exitoso");
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Registro fallido");
+        }
+    }
+    
+    
+    
 }

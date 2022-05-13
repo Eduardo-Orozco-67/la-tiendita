@@ -11,6 +11,8 @@ package Acciones;
  */
 
 import Connection.Conecction;
+import getterSetter.getterSetter;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +34,7 @@ public class Buscar {
         this.conexion = conexion;
     }
     
-     public String [] ID_cliente(){
+    public String [] ID_cliente(){
         String sql = "select id_cliente from cliente order by id_cliente ASC;";
         String []x = new String[1];
         try{
@@ -88,4 +90,54 @@ public class Buscar {
         }
         return x;
     }
+      
+     public String [] verCliente(String id_cliente){
+        String sql = "select * from cliente where id_cliente = "+id_cliente+" ;";      
+        String []x = new String[4];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("nombre");
+               x[1]=res.getString("rfc");
+               x[2]=res.getString("telefono");
+               x[3]=res.getString("direccion");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
+    public String[] vermonto(String id_venta){        
+        String sql = " select monto_final from compra_venta where id_venta = "+id_venta+";";
+        String []x=new String[3];
+        try{
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("monto_final");               
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
+    
 }
