@@ -10,17 +10,23 @@ package vistas;
  * @author Emili
  */
 import Connection.Conecction;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
+//import vistas.Venta;
+
 public class Ver_Ventas extends javax.swing.JFrame {
 
     /**
      * Creates new form prueba2
      */
+    
+    //Venta ven = new Venta();
     Connection c;
     public Ver_Ventas() {
         initComponents();
@@ -176,7 +182,7 @@ public class Ver_Ventas extends javax.swing.JFrame {
             modelado.addColumn("ID_venta");
             modelado.addColumn("ID_cliente");
             modelado.addColumn("fecha");
-            modelado.addColumn("monto_final");
+            modelado.addColumn("monto_final");  
 
             while(rs.next()){
                 Object[] filas = new Object[cant_columnas];
@@ -195,6 +201,16 @@ public class Ver_Ventas extends javax.swing.JFrame {
 
     private void regresarCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarCVActionPerformed
         // TODO add your handling code here:
+        
+        /*if(evt.getSource() == regresarCV)
+        {          
+            
+            //ven.setVisible(true);
+            this.setVisible(false);                        
+            ven.setVisible(true);      
+        
+            
+        }*/
     }//GEN-LAST:event_regresarCVActionPerformed
 
     /**
