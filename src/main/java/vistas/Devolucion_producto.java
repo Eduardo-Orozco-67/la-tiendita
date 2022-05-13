@@ -66,9 +66,9 @@ public class Devolucion_producto extends javax.swing.JFrame {
         regresarT = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        mostrartotal = new javax.swing.JTextField();
+        mostrartotalDP = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        modificarDP = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -78,6 +78,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         barrasDP = new javax.swing.JTextField();
         cantidadDP = new javax.swing.JTextField();
         devolver = new javax.swing.JButton();
+        regresarT1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,7 +149,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mostrartotal, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mostrartotalDP, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         jPanel6Layout.setVerticalGroup(
@@ -157,9 +158,13 @@ public class Devolucion_producto extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(mostrartotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mostrartotalDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
+
+        jLabel3.setFont(new java.awt.Font("Dubai Light", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("TOTAL");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -169,21 +174,19 @@ public class Devolucion_producto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(70, 70, 70))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3))
         );
-
-        modificarDP.setText("MODIFICAR");
-        modificarDP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarDPActionPerformed(evt);
-            }
-        });
 
         jPanel9.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -268,6 +271,13 @@ public class Devolucion_producto extends javax.swing.JFrame {
             }
         });
 
+        regresarT1.setText("CANCELAR");
+        regresarT1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarT1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -275,17 +285,18 @@ public class Devolucion_producto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(regresarT)
-                        .addGap(33, 33, 33)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(regresarT)
+                            .addComponent(regresarT1))
+                        .addGap(29, 29, 29)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(devolver)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(modificarDP))))
+                                .addGap(44, 44, 44)
+                                .addComponent(devolver))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,23 +309,24 @@ public class Devolucion_producto extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(modificarDP)
-                            .addComponent(devolver)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addComponent(regresarT1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(regresarT))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(devolver))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -377,19 +389,17 @@ public class Devolucion_producto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verproductosActionPerformed
 
-    private void modificarDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarDPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modificarDPActionPerformed
-
     private void comboventaDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaDPActionPerformed
         //Obtener datos de la base de datos del id venta
-        try{
-            String idcliente = comboventaAA.getSelectedItem().toString();
-            if(!idcliente.equals("Seleccione")){
+        try {
+            String idventa = comboventaDP.getSelectedItem().toString();
+            if (!idventa.equals("Seleccione")) {
+                String datos [] = busq.vermonto(idventa);
+                mostrartotalDP.setText(datos[0]);                
             }
-        }catch(Exception x){
+        } catch (Exception x) {
 
-        }
+        }      
     }//GEN-LAST:event_comboventaDPActionPerformed
 
     private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
@@ -398,14 +408,14 @@ public class Devolucion_producto extends javax.swing.JFrame {
         int barras = Integer.parseInt(barrasDP.getText());
         int cant = Integer.parseInt(cantidadDP.getText());
         //Conexion
-        c = new Conecction().conectar();
+        c = new Conecction().conectar(); 
         //Statement t = c.getConexion();
         PreparedStatement ps = null;
         ResultSet rs = null;       
         int pRes;
        
         try {          
-           String sql = "Call Devolucion("+idCombo+ ","+barras+","+cant+", NULL);";
+           String sql = "Call Devolucion("+idCombo+ ","+barras+","+cant+", NULL);"; 
            ps = c.prepareStatement(sql); 
            rs = ps.executeQuery();
            rs.next();
@@ -426,6 +436,12 @@ public class Devolucion_producto extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_devolverActionPerformed
+
+    private void regresarT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarT1ActionPerformed
+        // TODO add your handling code here:
+        limpiar_articulos();
+        
+    }//GEN-LAST:event_regresarT1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -463,41 +479,26 @@ public class Devolucion_producto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField barrasAA;
-    private javax.swing.JTextField barrasAA1;
     private javax.swing.JTextField barrasDP;
-    private javax.swing.JTextField cantidadAA;
-    private javax.swing.JTextField cantidadAA1;
     private javax.swing.JTextField cantidadDP;
-    private javax.swing.JComboBox<String> comboventaAA;
-    private javax.swing.JComboBox<String> comboventaAA1;
     private javax.swing.JComboBox<String> comboventaDP;
     private javax.swing.JButton devolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modificarDP;
-    private javax.swing.JTextField mostrartotal;
+    private javax.swing.JTextField mostrartotalDP;
     private javax.swing.JButton regresarT;
+    private javax.swing.JButton regresarT1;
     private javax.swing.JTable tablaproductos;
     private javax.swing.JButton verproductos;
     // End of variables declaration//GEN-END:variables
