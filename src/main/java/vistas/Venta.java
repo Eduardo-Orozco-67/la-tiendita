@@ -14,7 +14,7 @@ import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Connection.Conecction;
 import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -126,7 +126,9 @@ public class Venta extends javax.swing.JFrame {
 
         jButton1.setText("REGRESAR");
 
+        guardarventa.setBackground(new java.awt.Color(51, 51, 51));
         guardarventa.setText("GUARDAR");
+        guardarventa.setToolTipText("");
         guardarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarventaActionPerformed(evt);
@@ -296,6 +298,18 @@ public class Venta extends javax.swing.JFrame {
                     combotel.setEnabled(true);
                     fechaventa.setEnabled(true);
                }
+               public void windowClosed(WindowEvent we)
+               {
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
            });
         }
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -320,6 +334,18 @@ public class Venta extends javax.swing.JFrame {
                @Override
                public void windowClosing(WindowEvent we){
                     guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
+               public void windowClosed(WindowEvent we)
+               {
+                   guardarventa.setEnabled(true);
                     actualizar1.setEnabled(true);
                     cancelarventa.setEnabled(true);
                     jButton1.setEnabled(true);
@@ -373,8 +399,21 @@ public class Venta extends javax.swing.JFrame {
                     combotel.setEnabled(true);
                     fechaventa.setEnabled(true);
                }
+               public void windowClosed(WindowEvent we)
+               {
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
            });
         }
+
     }//GEN-LAST:event_MODIFICARActionPerformed
 
     private void cancelarventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarventaActionPerformed
@@ -414,7 +453,7 @@ public class Venta extends javax.swing.JFrame {
             
             tick.addWindowListener(new WindowAdapter(){
                @Override
-                public void windowClosing(WindowEvent we){
+               public void windowClosing(WindowEvent we){
                     guardarventa.setEnabled(true);
                     actualizar1.setEnabled(true);
                     cancelarventa.setEnabled(true);
@@ -424,7 +463,19 @@ public class Venta extends javax.swing.JFrame {
                     ticket.setEnabled(true);
                     combotel.setEnabled(true);
                     fechaventa.setEnabled(true);
-                }
+               }
+               public void windowClosed(WindowEvent we)
+               {
+                    guardarventa.setEnabled(true);
+                    actualizar1.setEnabled(true);
+                    cancelarventa.setEnabled(true);
+                    jButton1.setEnabled(true);
+                    jButton4.setEnabled(true);
+                    MODIFICAR.setEnabled(true);
+                    ticket.setEnabled(true);
+                    combotel.setEnabled(true);
+                    fechaventa.setEnabled(true);
+               }
            });
         }        
     }//GEN-LAST:event_ticketActionPerformed

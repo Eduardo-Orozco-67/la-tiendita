@@ -17,8 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
-
 //import vistas.Venta;
+
 
 public class Ver_Ventas extends javax.swing.JFrame {
 
@@ -52,7 +52,7 @@ public class Ver_Ventas extends javax.swing.JFrame {
         verventas = new javax.swing.JButton();
         regresarCV = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(227, 229, 201));
 
@@ -202,15 +202,12 @@ public class Ver_Ventas extends javax.swing.JFrame {
     private void regresarCVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarCVActionPerformed
         // TODO add your handling code here:
         
-        /*if(evt.getSource() == regresarCV)
+        if(evt.getSource() == regresarCV)
         {          
             
-            //ven.setVisible(true);
-            this.setVisible(false);                        
-            ven.setVisible(true);      
-        
+            dispose();                       
             
-        }*/
+        }
     }//GEN-LAST:event_regresarCVActionPerformed
 
     /**

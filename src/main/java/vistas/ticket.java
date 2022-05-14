@@ -65,7 +65,7 @@ public class ticket extends javax.swing.JFrame {
         verproductos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaproductos = new javax.swing.JTable();
-        regresarAA = new javax.swing.JButton();
+        regresarT = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -127,7 +127,12 @@ public class ticket extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        regresarAA.setText("REGRESAR");
+        regresarT.setText("REGRESAR");
+        regresarT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarTActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -245,7 +250,7 @@ public class ticket extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(regresarAA)
+                        .addComponent(regresarT)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
@@ -268,7 +273,7 @@ public class ticket extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(regresarAA)
+                    .addComponent(regresarT)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -349,6 +354,14 @@ public class ticket extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_verproductosActionPerformed
 
+    private void regresarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarTActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == regresarT) 
+        {           
+            dispose();           
+        }
+    }//GEN-LAST:event_regresarTActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -399,7 +412,7 @@ public class ticket extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField mostrartotal;
-    private javax.swing.JButton regresarAA;
+    private javax.swing.JButton regresarT;
     private javax.swing.JTable tablaproductos;
     private javax.swing.JButton verproductos;
     // End of variables declaration//GEN-END:variables
