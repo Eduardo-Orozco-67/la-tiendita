@@ -133,6 +133,11 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         );
 
         regresarAA.setText("REGRESAR");
+        regresarAA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarAAActionPerformed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -434,6 +439,14 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         // TODO add your handling code here:
         limpiar_articulos();
     }//GEN-LAST:event_regresarAA1ActionPerformed
+
+    private void regresarAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarAAActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == regresarAA) 
+        {           
+            dispose();           
+        }
+    }//GEN-LAST:event_regresarAAActionPerformed
 
     /**
      * @param args the command line arguments

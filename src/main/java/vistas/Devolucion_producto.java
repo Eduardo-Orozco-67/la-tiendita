@@ -78,7 +78,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         barrasDP = new javax.swing.JTextField();
         cantidadDP = new javax.swing.JTextField();
         devolver = new javax.swing.JButton();
-        regresarT1 = new javax.swing.JButton();
+        limpiarDP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +132,11 @@ public class Devolucion_producto extends javax.swing.JFrame {
         );
 
         regresarT.setText("REGRESAR");
+        regresarT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarTActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(180, 207, 176));
 
@@ -271,10 +276,10 @@ public class Devolucion_producto extends javax.swing.JFrame {
             }
         });
 
-        regresarT1.setText("CANCELAR");
-        regresarT1.addActionListener(new java.awt.event.ActionListener() {
+        limpiarDP.setText("CANCELAR");
+        limpiarDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresarT1ActionPerformed(evt);
+                limpiarDPActionPerformed(evt);
             }
         });
 
@@ -288,7 +293,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(regresarT)
-                            .addComponent(regresarT1))
+                            .addComponent(limpiarDP))
                         .addGap(29, 29, 29)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -311,7 +316,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(regresarT1)
+                        .addComponent(limpiarDP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(regresarT))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -437,11 +442,20 @@ public class Devolucion_producto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_devolverActionPerformed
 
-    private void regresarT1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarT1ActionPerformed
+    private void limpiarDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarDPActionPerformed
         // TODO add your handling code here:
         limpiar_articulos();
         
-    }//GEN-LAST:event_regresarT1ActionPerformed
+    }//GEN-LAST:event_limpiarDPActionPerformed
+
+    private void regresarTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarTActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == regresarT) 
+        {           
+            dispose();           
+        }       
+        
+    }//GEN-LAST:event_regresarTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -496,9 +510,9 @@ public class Devolucion_producto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton limpiarDP;
     private javax.swing.JTextField mostrartotalDP;
     private javax.swing.JButton regresarT;
-    private javax.swing.JButton regresarT1;
     private javax.swing.JTable tablaproductos;
     private javax.swing.JButton verproductos;
     // End of variables declaration//GEN-END:variables
