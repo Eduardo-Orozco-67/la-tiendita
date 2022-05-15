@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Connection.Conecction;
+import java.awt.HeadlessException;
 import java.sql.SQLException;
 
 /**
@@ -14,7 +15,8 @@ import java.sql.SQLException;
  */
 public class eliminar {
     
-    Conecction c = new Conecction();
+     private final Conecction c = new Conecction();
+    
     Statement st; //Para uso de sentencia Sql
     Connection conexion;
     
@@ -26,10 +28,25 @@ public class eliminar {
             st.execute(sql);
             st.close();
             JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
-            
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Eliminacion fallida");
         }
     }
     
-}
+     public void eliminarproveedor(int idp)
+    {
+          try {
+            Connection conexiion = c.conectar();
+            st=conexiion.createStatement();
+            String sql= "DELETE FROM proveedor WHERE id_proveedor ="+idp+";";
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+            //mensajes de eliminacion
+            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar registro " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }
+    
