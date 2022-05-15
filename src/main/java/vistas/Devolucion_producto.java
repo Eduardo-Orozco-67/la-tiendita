@@ -104,6 +104,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaproductos);
 
         verproductos.setText("VER PRODUCTOS");
+        verproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verproductosActionPerformed(evt);
@@ -132,6 +133,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         );
 
         regresarT.setText("REGRESAR");
+        regresarT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarTActionPerformed(evt);
@@ -210,6 +212,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         jLabel11.setText("CANTIDAD");
 
         comboventaDP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboventaDP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboventaDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboventaDPActionPerformed(evt);
@@ -270,6 +273,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         );
 
         devolver.setText("DEVOLUCION");
+        devolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         devolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 devolverActionPerformed(evt);
@@ -277,6 +281,7 @@ public class Devolucion_producto extends javax.swing.JFrame {
         });
 
         limpiarDP.setText("CANCELAR");
+        limpiarDP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         limpiarDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 limpiarDPActionPerformed(evt);

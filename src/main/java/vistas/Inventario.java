@@ -22,6 +22,8 @@ public class Inventario extends javax.swing.JFrame {
     
     public Inventario() {
         initComponents();
+        this.setResizable(false); 
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -40,7 +42,7 @@ public class Inventario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         regresarinv = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(229, 227, 201));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

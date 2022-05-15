@@ -76,6 +76,7 @@ public class Ver_Ventas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaventas);
 
         verventas.setText("VER VENTAS");
+        verventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verventasActionPerformed(evt);
@@ -104,6 +105,7 @@ public class Ver_Ventas extends javax.swing.JFrame {
         );
 
         regresarCV.setText("REGRESAR");
+        regresarCV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarCV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarCVActionPerformed(evt);

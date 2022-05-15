@@ -20,6 +20,8 @@ public class Gestion_datos extends javax.swing.JFrame {
      */
     public Gestion_datos() {
         initComponents();
+        this.setResizable(false); 
+        this.setLocationRelativeTo(this);
     }
     
     Inventario inv = new Inventario ();
@@ -40,7 +42,7 @@ public class Gestion_datos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         regresarp = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(229, 227, 201));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,8 +51,10 @@ public class Gestion_datos extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(204, 255, 204));
 
         btcliente.setText("CLIENTE");
+        btcliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btinventario.setText("INVENTARIO");
+        btinventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btinventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btinventarioActionPerformed(evt);
@@ -86,6 +90,7 @@ public class Gestion_datos extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         regresarp.setText("REGRESAR");
+        regresarp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(regresarp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

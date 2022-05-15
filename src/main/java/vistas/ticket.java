@@ -45,9 +45,7 @@ public class ticket extends javax.swing.JFrame {
 
         for (String i : barras) {
             comboventapr.addItem(i);
-        }
-        //barrasAA.setText("");
-        //cantidadAA.setText("");
+        }        
     }
 
     /**
@@ -76,7 +74,7 @@ public class ticket extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(227, 229, 201));
 
@@ -87,6 +85,7 @@ public class ticket extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(180, 207, 176));
 
         verproductos.setText("VER PRODUCTOS");
+        verproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verproductosActionPerformed(evt);
@@ -128,6 +127,7 @@ public class ticket extends javax.swing.JFrame {
         );
 
         regresarT.setText("REGRESAR");
+        regresarT.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarTActionPerformed(evt);
@@ -143,6 +143,7 @@ public class ticket extends javax.swing.JFrame {
         jLabel2.setText("ID VENTA");
 
         comboventapr.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboventapr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboventapr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboventaprActionPerformed(evt);
@@ -258,11 +259,11 @@ public class ticket extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(351, 351, 351))
+                .addGap(339, 339, 339))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

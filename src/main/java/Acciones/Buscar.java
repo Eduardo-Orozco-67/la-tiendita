@@ -122,12 +122,106 @@ public class Buscar {
     
     public String[] vermonto(String id_venta){        
         String sql = " select monto_final from compra_venta where id_venta = "+id_venta+";";
-        String []x=new String[3];
+        String []x=new String[3]; 
         try{
            st=conexion.createStatement(); 
            res=st.executeQuery(sql);
            while(res.next()){
                x[0]=res.getString("monto_final");               
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage());
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+        }
+        return x;
+    }
+    
+    public String[] controldiario(){          
+        String sql = "select SUM(com.monto_final) as Ventas_totales from compra_venta com WHERE com.fecha = CURRENT_DATE;";
+        String []x=new String[3];  
+        try{
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("Ventas_totales");                
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
+    public String[] controlrango(String fecha_inicio, String fecha_fin){          
+        String sql = "select SUM(com.monto_final) as Ventas_totales from compra_venta com WHERE com.fecha >= '"+fecha_inicio+"' AND com.fecha <= '"+fecha_fin+"';";
+        String []x=new String[1];  
+        try{
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("Ventas_totales");                
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
+    public String[] total_productos(String fecha_inicio, String fecha_fin){          
+        String sql = "select SUM(prod.stock_inicial) as Stock_total from producto prod WHERE prod.fecha_prod >= '"+fecha_inicio+"' AND prod.fecha_prod <= '"+fecha_fin+"';";
+        String []x=new String[1];  
+        try{
+           Conecction conex = new Conecction();
+           conexion = conex.conectar();
+           
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("Stock_total");                
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage()); 
+            }
+        }
+        return x;
+    }
+    
+    public String[] total_productos_vendidos(String fecha_ini, String fecha_fi){          
+        String sql = "";
+        String []x=new String[1];  
+        try{
+           Conecction conex = new Conecction();
+           conexion = conex.conectar(); 
+           
+           st=conexion.createStatement(); 
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("Stock_total");                
            }  
         }catch(Exception e){
            JOptionPane.showMessageDialog(null,e.getMessage() );
