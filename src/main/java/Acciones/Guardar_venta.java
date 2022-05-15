@@ -84,7 +84,7 @@ public class Guardar_venta {
         }
     }
     
-      public void insertar_Categoria(String Nombre, String Descripcion)
+      public void guardar_Categoria(String Nombre, String Descripcion)
     {
          try {
             

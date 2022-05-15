@@ -32,4 +32,19 @@ public class eliminar {
         }
     }
     
+        public void eliminar_categoria(String Nombre){
+        try {
+
+            st=conexion.createStatement();
+            String sql= "delete from Categoria where Nombre='"+Nombre+"'; ";
+            st.executeUpdate(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente","Eliminado",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            
+        }
+            JOptionPane.showMessageDialog(null, "Error al eliminar registro ", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+
 }

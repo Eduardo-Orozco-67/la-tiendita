@@ -196,31 +196,55 @@ public class Buscar {
     
     //BiPO 
     //Busqueda de la categoría
-    public void mostrar(String nombre_c) {
-        try {
-    java.sql.Statement st;
-    ResultSet rs;
-    getterSetter var = new getterSetter();
-
-            st = conexion.createStatement();
-            String sql = "select * from categoria where nombre='" + nombre_c + "';";
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                var.setId_categoria(rs.getInt("ID_Categoria"));
-                var.setNombre_c(rs.getString("Nombre"));
-                var.setDescripcion(rs.getString("Descripcion"));
-            } else {
-                var.setId_categoria(0);
-                var.setNombre("");
-                var.setDescripcion("");
-                JOptionPane.showMessageDialog(null, "no se encontro registro", "sin registro", JOptionPane.INFORMATION_MESSAGE);
+        public String [] verNombreCat(){
+        String sql = "select nombre from categoria order by id_categoria ASC;";      
+        String []x = new String[1];
+        try{
+           st=conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);   
+           res=st.executeQuery(sql);
+           res.last();
+           int filas = res.getRow();
+           res.beforeFirst(); 
+           x = new String[filas];
+           filas = 0;
+           while(res.next()){
+               x[filas]=res.getString("nombre");     
+               filas++;
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
             }
-            st.close();
-            conexion.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error en programa " + e, "Error de sistema", JOptionPane.ERROR_MESSAGE);
         }
+        return x;
     }
-    
+        public String [] BuscarCategoria(String nombre){
+        String sql = "select nombre, telefono, direccion from cliente where nombre = '"+nombre+"' ;";      
+        String []x = new String[3];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("id_categoria");
+               x[1]=res.getString("nombre");
+               x[2]=res.getString("descripcion");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
 }

@@ -38,7 +38,7 @@ public class modificar {
             try {
                 st.close();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+            JOptionPane.showMessageDialog(null,ex.getMessage());
             }
         }
         return respuesta;
@@ -62,5 +62,18 @@ public class modificar {
         }
 
       }
-      
+ 
+        public void modificarCategoria(String Nombre, String Descripcion) {
+        
+        try {
+            st = conexion.createStatement();
+            String sql = "update Categoria set Nombre='" + Nombre +"',Descripcion='" + Descripcion + "' where Nombre ='" + Nombre + "'; ";
+            st.executeUpdate(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "El registro se actualizo", "Exito", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

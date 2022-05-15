@@ -163,6 +163,7 @@ public class VistaClientes extends javax.swing.JFrame {
         jLabel4.setText("Telefono:");
 
         BtnGuardar.setText("Guardar");
+        BtnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnGuardarActionPerformed(evt);
