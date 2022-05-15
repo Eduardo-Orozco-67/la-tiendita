@@ -22,15 +22,21 @@ public class salidas extends javax.swing.JFrame {
      * Creates new form salidas
      */
     
-    Buscar busq;
     Connection c;
     Conecction con = new Conecction();
+    Buscar busq = new Buscar();
     
     public salidas() {
         initComponents();
         c = new Conecction().conectar();
         this.setResizable(false);
         this.setLocationRelativeTo(this);
+    }
+    
+    public void limpiar(){
+        mostrartotal.setText("");
+        inicio.setText("");
+        fin.setText("");
     }
 
     /**
@@ -303,7 +309,7 @@ public class salidas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void verproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verproductosActionPerformed
-        //MOSTRAR TABLA DE LOS PRODUCTOS VENDIDOS      
+        //MOSTRAR TABLA DE LOS PRODUCTOS VENDIDOS
         
         try{
             DefaultTableModel modelado = new DefaultTableModel();
@@ -319,19 +325,20 @@ public class salidas extends javax.swing.JFrame {
             ResultSet rs = null;
             //Connection con= getConection();
             c = new Conecction().conectar();
-            String sql = "select pr.num_barras as codigo_de_barras, pr.nombre as nombre_de_producto, SUM(det.cantidad) as cantidad_vendida, com.fecha as fecha_salida from producto pr INNER JOIN detalles det ON det.id_producto = pr.id_producto INNER JOIN compra_venta com ON com.id_venta = det.id_venta WHERE com.fecha >= '"+fecha_inicio+"' and com.fecha <= '"+fecha_fin+"' GROUP BY pr.num_barras, pr.nombre, com.fecha;";
-            System.out.println("ban0000"); 
+            String sql = "select pr.num_barras as codigo_de_barras, pr.nombre as nombre_de_producto, SUM(det.cantidad) as cantidad_vendida, com.fecha as fecha_salida from producto pr INNER JOIN detalles det ON det.id_producto = pr.id_producto "
+                    + "INNER JOIN compra_venta com ON com.id_venta = det.id_venta WHERE com.fecha >= '"+fecha_inicio+"' and com.fecha <= '"+fecha_fin+"' GROUP BY pr.num_barras, pr.nombre, com.fecha;";
+            ps = c.prepareStatement(sql);
             rs = ps.executeQuery();
             c = new Conecction().conectar();
-System.out.println("ban0000022");
+
             ResultSetMetaData rsMetaD = rs.getMetaData();
             int cant_columnas = rsMetaD.getColumnCount();
-System.out.println("ban00011222");
+
             modelado.addColumn("codigo_de_barras");
             modelado.addColumn("nombre_de_producto");
             modelado.addColumn("cantidad_vendida");
-            modelado.addColumn("fecha_salida");            
-System.out.println("ban00011999999999999");
+            modelado.addColumn("fecha_salida");
+
             while(rs.next()){
                 Object[] filas = new Object[cant_columnas];
 
@@ -343,7 +350,8 @@ System.out.println("ban00011999999999999");
             }
         }catch(Exception e){
             System.out.println("e");
-        }
+
+        }       
     }//GEN-LAST:event_verproductosActionPerformed
 
     private void regresarrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarrepActionPerformed
@@ -355,23 +363,23 @@ System.out.println("ban00011999999999999");
     }//GEN-LAST:event_regresarrepActionPerformed
 
     private void prodtotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodtotalActionPerformed
-
+                
         try {
             String fecha_inicio = inicio.getText();
             String fecha_fin = fin.getText();
 
             if (fecha_inicio != null) {
-                String datos [] = busq.controlrango(fecha_inicio, fecha_fin);
+                String datos [] = busq.total_productos_vendidos(fecha_inicio, fecha_fin);
                 mostrartotal.setText(datos[0]);
             }
         } catch (Exception x) {
 
-        }        
+        }      
     }//GEN-LAST:event_prodtotalActionPerformed
 
     private void cancelarrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarrepActionPerformed
         // TODO add your handling code here:
-        
+        limpiar();       
     }//GEN-LAST:event_cancelarrepActionPerformed
 
     /**
