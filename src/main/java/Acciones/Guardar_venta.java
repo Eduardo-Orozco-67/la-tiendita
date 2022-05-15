@@ -84,6 +84,45 @@ public class Guardar_venta {
         }
     }
     
+    public boolean guardaproveedor(String rfc, String nombre,long telefono,String direccion)
+    {
+        String sql="insert into proveedor (rfc, nombre, telefono, direccion) values('"+rfc+"','"+nombre+"', '"+telefono+"', '"+direccion+"');";
+        boolean respuesta = true;
+        try{
+            st=conexion.createStatement();
+            respuesta=st.execute(sql);
+            JOptionPane.showMessageDialog(null, "Registro exitoso", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                st.close();
+            }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return !respuesta;
+    }
+    
+    public boolean guardaproducto(String rfc, String nombre,long telefono,String direccion)
+    {
+        String sql="insert into proveedor (rfc, nombre, telefono, direccion) values('"+rfc+"','"+nombre+"', '"+telefono+"', '"+direccion+"');";
+        boolean respuesta = true;
+        try{
+            st=conexion.createStatement();
+            respuesta=st.execute(sql);
+            JOptionPane.showMessageDialog(null, "Registro exitoso", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                st.close();
+            }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return !respuesta;
+    }
     
     
 }

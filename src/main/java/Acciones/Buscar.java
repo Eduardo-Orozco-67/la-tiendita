@@ -288,5 +288,58 @@ public class Buscar {
         return x;
     }
     
+    public String [] verproveedor(String rfcp){
+        String sql = "select * from proveedor where rfc= '"+rfcp+"' ;";      
+        String []x = new String[4];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("id_proveedor");
+               x[1]=res.getString("nombre");
+               x[2]=res.getString("telefono");
+               x[3]=res.getString("direccion");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
+    public String [] verRfcp(){
+        String sql = "select rfc from proveedor;";      
+        String []x = new String[1];
+        try{
+           st=conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);   
+           res=st.executeQuery(sql);
+           res.last();
+           int filas = res.getRow();
+           res.beforeFirst(); 
+           x = new String[filas];
+           filas = 0;
+           while(res.next()){
+               x[filas]=res.getString("rfc");     
+               filas++;
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
     
 }
