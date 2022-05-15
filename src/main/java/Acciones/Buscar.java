@@ -186,13 +186,12 @@ public class Buscar {
         return x;
     }
     
-    public String[] total_productos(String fecha_inicio, String fecha_fin){          
+    public String[] total_productos(String fecha_inicio, String fecha_fin){ 
         String sql = "select SUM(prod.stock_inicial) as Stock_total from producto prod WHERE prod.fecha_prod >= '"+fecha_inicio+"' AND prod.fecha_prod <= '"+fecha_fin+"';";
-        String []x=new String[1];  
+        String []x=new String[1];       
         try{
            Conecction conex = new Conecction();
-           conexion = conex.conectar();
-           
+           conexion = conex.conectar();           
            st=conexion.createStatement(); 
            res=st.executeQuery(sql);
            while(res.next()){
@@ -209,10 +208,10 @@ public class Buscar {
             }
         }
         return x;
-    }
+    }   
     
-    public String[] total_productos_vendidos(String fecha_ini, String fecha_fi){          
-        String sql = "";
+    public String[] total_productos_vendidos(String fecha_inicio, String fecha_fin){          
+        String sql = "select SUM(det.cantidad) as Salidas_totales from detalles det INNER JOIN compra_venta ven ON ven.id_venta = det.id_venta where ven.Fecha >= '"+fecha_inicio+"' AND ven.Fecha <= '"+fecha_fin+"';";
         String []x=new String[1];  
         try{
            Conecction conex = new Conecction();
@@ -221,7 +220,7 @@ public class Buscar {
            st=conexion.createStatement(); 
            res=st.executeQuery(sql);
            while(res.next()){
-               x[0]=res.getString("Stock_total");                
+               x[0]=res.getString("Salidas_totales");                
            }  
         }catch(Exception e){
            JOptionPane.showMessageDialog(null,e.getMessage() );

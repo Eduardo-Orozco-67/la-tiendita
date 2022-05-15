@@ -10,6 +10,7 @@ import java.sql.*;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import Acciones.Buscar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,15 +22,22 @@ public class entradas extends javax.swing.JFrame {
      * Creates new form entradas
      */
     
-    Buscar busq;
+    
     Connection c;
     Conecction con = new Conecction();
+    Buscar busq = new Buscar();
     
     public entradas() {
         initComponents();
         c = new Conecction().conectar();
         this.setResizable(false);
         this.setLocationRelativeTo(this);        
+    }
+    
+    public void limpiar(){
+        prodtot.setText("");
+        inicioen.setText("");
+        finen.setText("");
     }
 
     /**
@@ -50,7 +58,7 @@ public class entradas extends javax.swing.JFrame {
         regresarrep = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        totalproductos = new javax.swing.JTextField();
+        prodtot = new javax.swing.JTextField();
         totalprod = new javax.swing.JButton();
         cancelarrep = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -124,9 +132,9 @@ public class entradas extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(148, 180, 159));
 
-        totalproductos.addActionListener(new java.awt.event.ActionListener() {
+        prodtot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalproductosActionPerformed(evt);
+                prodtotActionPerformed(evt);
             }
         });
 
@@ -136,14 +144,14 @@ public class entradas extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
-                .addComponent(totalproductos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(prodtot, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(totalproductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(prodtot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -323,7 +331,9 @@ public class entradas extends javax.swing.JFrame {
             ResultSet rs = null;
             //Connection con= getConection();
             c = new Conecction().conectar();
-            String sql = "select pr.rfc as RFC, pr.nombre as Nombre_proveedor, prod.nombre as Nombre_producto, prod.num_barras as Codigo_de_barras, prod.stock_inicial as total_de_producto, prod.fecha_prod as fecha_ingreso from proveedor pr INNER JOIN producto prod ON pr.id_proveedor = prod.id_proveedor where prod.fecha_prod >= '"+fecha_inicio+"' AND prod.fecha_prod <= '"+fecha_fin+"' GROUP BY prod.fecha_prod, pr.rfc, pr.nombre, prod.nombre, prod.num_barras, prod.stock_inicial;";
+            String sql = "select pr.rfc as RFC, pr.nombre as Nombre_proveedor, prod.nombre as Nombre_producto, prod.num_barras as Codigo_de_barras, prod.stock_inicial as total_de_producto, prod.fecha_prod as fecha_ingreso from proveedor pr "
+                    + "INNER JOIN producto prod ON pr.id_proveedor = prod.id_proveedor where prod.fecha_prod >= '"+fecha_inicio+"' AND prod.fecha_prod <= '"+fecha_fin+"' "
+                    + "GROUP BY prod.fecha_prod, pr.rfc, pr.nombre, prod.nombre, prod.num_barras, prod.stock_inicial;";
             ps = c.prepareStatement(sql);
             rs = ps.executeQuery();
             c = new Conecction().conectar();
@@ -362,32 +372,32 @@ public class entradas extends javax.swing.JFrame {
     }//GEN-LAST:event_regresarrepActionPerformed
 
     private void totalprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalprodActionPerformed
-        
+                
         try {
             String fecha_inicio = inicioen.getText();
             String fecha_fin = finen.getText();
             
             if (fecha_inicio != null) {
-                c = new Conecction().conectar();
-                String datos [] = busq.total_productos(fecha_inicio, fecha_fin);
-                totalproductos.setText(datos[0]); 
+                c = new Conecction().conectar();                
+                String datos [] = busq.total_productos(fecha_inicio, fecha_fin);                
+                prodtot.setText(datos[0]); 
                 System.out.println(datos[0]);
             } 
             
         } catch (Exception x) {
             System.out.println("e");
             
-        }      
+        }    
     }//GEN-LAST:event_totalprodActionPerformed
 
     private void cancelarrepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarrepActionPerformed
         // TODO add your handling code here:
-        
+        limpiar();
     }//GEN-LAST:event_cancelarrepActionPerformed
 
-    private void totalproductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalproductosActionPerformed
+    private void prodtotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodtotActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_totalproductosActionPerformed
+    }//GEN-LAST:event_prodtotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,10 +448,10 @@ public class entradas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField prodtot;
     private javax.swing.JButton regresarrep;
     private javax.swing.JTable tablaproductos;
     private javax.swing.JButton totalprod;
-    private javax.swing.JTextField totalproductos;
     private javax.swing.JButton verproductos;
     // End of variables declaration//GEN-END:variables
 }
