@@ -81,7 +81,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         comprarAA = new javax.swing.JButton();
         regresarAA1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(227, 229, 201));
 
@@ -105,6 +105,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tablaproductos);
 
         verproductos.setText("VER PRODUCTOS");
+        verproductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verproductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verproductosActionPerformed(evt);
@@ -133,6 +134,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         );
 
         regresarAA.setText("REGRESAR");
+        regresarAA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarAA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarAAActionPerformed(evt);
@@ -156,6 +158,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         jLabel4.setText("CANTIDAD");
 
         comboventaAA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        comboventaAA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comboventaAA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboventaAAActionPerformed(evt);
@@ -262,6 +265,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         );
 
         comprarAA.setText("COMPRAR");
+        comprarAA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comprarAA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comprarAAActionPerformed(evt);
@@ -269,6 +273,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         });
 
         regresarAA1.setText("CANCELAR");
+        regresarAA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         regresarAA1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 regresarAA1ActionPerformed(evt);
@@ -350,10 +355,13 @@ public class Agregar_Articulos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboventaAAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboventaAAActionPerformed
-        //Obtener datos de la base de datos del id venta              
+        //Obtener datos de la base de datos del id venta 
+        c = new Conecction().conectar();
         try {
+            c = new Conecction().conectar();
             String idventa = comboventaAA.getSelectedItem().toString();
             if (!idventa.equals("Seleccione")) {
+                c = new Conecction().conectar();
                 String datos [] = busq.vermonto(idventa);
                 mostrartotal.setText(datos[0]);                 
             }
@@ -369,16 +377,17 @@ public class Agregar_Articulos extends javax.swing.JFrame {
         int barras = Integer.parseInt(barrasAA.getText());
         int cant = Integer.parseInt(cantidadAA.getText());
         //Conexion
-        c = new Conecction().conectar();
+        c = new Conecction().conectar(); 
         //Statement t = c.getConexion();
         PreparedStatement ps = null;
         ResultSet rs = null;       
         int pRes;
        
-        try {          
+        try {  
+           c = new Conecction().conectar();
            String sql = "Call GuardarDetalle("+idCombo+ ","+barras+","+cant+", NULL);";
            ps = c.prepareStatement(sql); 
-           rs = ps.executeQuery();
+           rs = ps.executeQuery(); 
            rs.next();
            pRes = rs.getInt("pRes");
             //Condicion para cuando ya se ha guardado el registro
@@ -392,7 +401,7 @@ public class Agregar_Articulos extends javax.swing.JFrame {
                 //Se debe mostrar el total que lleva la venta               
             }
         }catch (Exception e){
-            System.out.println(e.getMessage() );
+            System.out.println(e.getMessage()); 
         }     
     }//GEN-LAST:event_comprarAAActionPerformed
 

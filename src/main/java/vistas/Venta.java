@@ -97,6 +97,7 @@ public class Venta extends javax.swing.JFrame {
         jLabel2.setText("CLIENTE");
 
         jButton4.setText("AGREGAR ARTICULOS");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -104,6 +105,7 @@ public class Venta extends javax.swing.JFrame {
         });
 
         combotel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        combotel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         combotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combotelActionPerformed(evt);
@@ -118,6 +120,7 @@ public class Venta extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(204, 255, 204));
 
         cancelarventa.setText("CANCELAR");
+        cancelarventa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarventaActionPerformed(evt);
@@ -125,10 +128,12 @@ public class Venta extends javax.swing.JFrame {
         });
 
         jButton1.setText("REGRESAR");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        guardarventa.setBackground(new java.awt.Color(51, 51, 51));
+        guardarventa.setBackground(new java.awt.Color(102, 102, 102));
         guardarventa.setText("GUARDAR");
         guardarventa.setToolTipText("");
+        guardarventa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         guardarventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarventaActionPerformed(evt);
@@ -136,6 +141,7 @@ public class Venta extends javax.swing.JFrame {
         });
 
         actualizar1.setText("VER VENTAS");
+        actualizar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         actualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actualizar1ActionPerformed(evt);
@@ -170,6 +176,7 @@ public class Venta extends javax.swing.JFrame {
         );
 
         MODIFICAR.setText("DEVOLUCION");
+        MODIFICAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MODIFICAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MODIFICARActionPerformed(evt);
@@ -177,6 +184,7 @@ public class Venta extends javax.swing.JFrame {
         });
 
         ticket.setText("TICKET");
+        ticket.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ticket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ticketActionPerformed(evt);
