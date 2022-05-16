@@ -146,7 +146,7 @@ public class VistaClientes extends javax.swing.JFrame {
         Limpiar4 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setBackground(new java.awt.Color(120, 147, 149));
         jTabbedPane1.setForeground(new java.awt.Color(51, 51, 51));

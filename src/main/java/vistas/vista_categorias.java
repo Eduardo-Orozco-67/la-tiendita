@@ -8,6 +8,7 @@ package vistas;
 import Acciones.*;
 import Connection.Conecction;
 import java.sql.Connection;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,16 +28,66 @@ public class vista_categorias extends javax.swing.JFrame {
     int contador=0;
 
     public vista_categorias() {
-    initComponents();
-    
+        initComponents();
+        
         c = new Conecction().conectar();
         busq = new Buscar(c);
         this.setResizable(true); 
         this.setLocationRelativeTo(this);
+        buscar_cats();
+        buscar_idcats();
+    }
+    ImageIcon iconobtn = new ImageIcon("src/main/java/Iconos/disco-flexible.png");
+    ImageIcon iconobtn2 = new ImageIcon("src/main/java/Iconos/eliminar.png");
+    ImageIcon iconobtn3 = new ImageIcon("src/main/java/Iconos/editar-informacion.png");
     
-        
+    
+    public void limpiar1()
+    {
+        txtnombreguardar.setText("");
+        txtdescripcionguardar.setText("");
+    }
+    
+    public void limpiar2()
+    {
+        txtidbuscar.setText("");
+        txtnombrebuscar1.setText("");
+        txtdescripcionbuscar.setText("");
+    }
+    
+    public void limpiar3()
+    {
+        txtnombremodificar.setText("");
+        txtdescripcionmodificar.setText("");
         
     }
+     
+    
+    public final void buscar_cats()
+     {
+        combobuscar.removeAllItems();
+        combobuscar.addItem("Seleccione");
+        c = new Conecction().conectar();
+         String []barras = busq.vercatcom();
+        
+        for(String i:barras)
+        {
+           combobuscar.addItem(i); 
+        }
+     }
+    
+    public final void buscar_idcats()
+     {
+        combomodificar.removeAllItems();
+        combomodificar.addItem("Seleccione");
+        c = new Conecction().conectar();
+         String []barras = busq.veridcategoria();
+        
+        for(String i:barras)
+        {
+           combomodificar.addItem(i); 
+        }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,14 +136,13 @@ public class vista_categorias extends javax.swing.JFrame {
         btnmodificar = new javax.swing.JButton();
         PanelEliminar = new javax.swing.JPanel();
         btnregresareliminar = new javax.swing.JButton();
-        btnlimpiareliminar = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         PanelEliminar2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtideliminar = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -135,7 +185,7 @@ public class vista_categorias extends javax.swing.JFrame {
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("⎇", Panel1);
@@ -159,6 +209,7 @@ public class vista_categorias extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Descripción");
 
+        btnguardar.setIcon(iconobtn);
         btnguardar.setText("GUARDAR");
         btnguardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -188,9 +239,9 @@ public class vista_categorias extends javax.swing.JFrame {
         PanelGuardarLayout.setHorizontalGroup(
             PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelGuardarLayout.createSequentialGroup()
-                .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(16, 16, 16)
+                .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelGuardarLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
                         .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelGuardarLayout.createSequentialGroup()
@@ -202,15 +253,15 @@ public class vista_categorias extends javax.swing.JFrame {
                                     .addComponent(txtdescripcionguardar)
                                     .addGroup(PanelGuardarLayout.createSequentialGroup()
                                         .addComponent(txtnombreguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelGuardarLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addComponent(btnregresarguardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnlimpiarguardar)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnguardar)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
         PanelGuardarLayout.setVerticalGroup(
             PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,12 +276,13 @@ public class vista_categorias extends javax.swing.JFrame {
                 .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtdescripcionguardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnregresarguardar)
-                    .addComponent(btnlimpiarguardar)
-                    .addComponent(btnguardar))
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addGroup(PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnregresarguardar)
+                        .addComponent(btnlimpiarguardar))
+                    .addComponent(btnguardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62))
         );
 
         jTabbedPane1.addTab("Guardar", PanelGuardar);
@@ -262,11 +314,21 @@ public class vista_categorias extends javax.swing.JFrame {
 
         btnregresarbuscar.setText("REGRESAR");
         btnregresarbuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnregresarbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarbuscarActionPerformed(evt);
+            }
+        });
 
         btnlimpiarbuscar.setText("LIMPIAR");
         btnlimpiarbuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnlimpiarbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlimpiarbuscarActionPerformed(evt);
+            }
+        });
 
-        combobuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Click para ver las categorías" }));
+        combobuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         combobuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         combobuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,7 +390,7 @@ public class vista_categorias extends javax.swing.JFrame {
                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtdescripcionbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(PanelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnregresarbuscar)
                     .addComponent(btnlimpiarbuscar))
@@ -343,7 +405,7 @@ public class vista_categorias extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("MODIFIQUE UNA CATEGORÍA");
 
-        combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Click para ver las categorías" }));
+        combomodificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
         combomodificar.setToolTipText("");
         combomodificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         combomodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -364,10 +426,21 @@ public class vista_categorias extends javax.swing.JFrame {
 
         btnregresarmodificar.setText("REGRESAR");
         btnregresarmodificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnregresarmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresarmodificarActionPerformed(evt);
+            }
+        });
 
         btnlimpiarmodificar.setText("LIMPIAR");
         btnlimpiarmodificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnlimpiarmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnlimpiarmodificarActionPerformed(evt);
+            }
+        });
 
+        btnmodificar.setIcon(iconobtn3);
         btnmodificar.setText("MODIFICAR");
         btnmodificar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -381,27 +454,29 @@ public class vista_categorias extends javax.swing.JFrame {
         PanelModificarLayout.setHorizontalGroup(
             PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelModificarLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelModificarLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(combomodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelModificarLayout.createSequentialGroup()
+                                .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel12))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtdescripcionmodificar)
+                                    .addGroup(PanelModificarLayout.createSequentialGroup()
+                                        .addComponent(txtnombremodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 98, Short.MAX_VALUE))))))
+                    .addGroup(PanelModificarLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
                         .addComponent(btnregresarmodificar)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnlimpiarmodificar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnmodificar))
-                    .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(combomodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(PanelModificarLayout.createSequentialGroup()
-                            .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel12))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtdescripcionmodificar)
-                                .addGroup(PanelModificarLayout.createSequentialGroup()
-                                    .addComponent(txtnombremodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelModificarLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,12 +504,17 @@ public class vista_categorias extends javax.swing.JFrame {
                 .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(txtdescripcionmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnregresarmodificar)
-                    .addComponent(btnlimpiarmodificar)
-                    .addComponent(btnmodificar))
-                .addGap(45, 45, 45))
+                .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelModificarLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PanelModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnregresarmodificar)
+                            .addComponent(btnlimpiarmodificar))
+                        .addGap(45, 45, 45))
+                    .addGroup(PanelModificarLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(btnmodificar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(44, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Modificar", PanelModificar);
@@ -443,10 +523,13 @@ public class vista_categorias extends javax.swing.JFrame {
 
         btnregresareliminar.setText("REGRESAR");
         btnregresareliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnregresareliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregresareliminarActionPerformed(evt);
+            }
+        });
 
-        btnlimpiareliminar.setText("LIMPIAR");
-        btnlimpiareliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
+        btneliminar.setIcon(iconobtn2);
         btneliminar.setText("ELIMINAR");
         btneliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btneliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -496,28 +579,26 @@ public class vista_categorias extends javax.swing.JFrame {
         PanelEliminarLayout.setHorizontalGroup(
             PanelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEliminarLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnregresareliminar)
-                .addGap(18, 18, 18)
-                .addComponent(btnlimpiareliminar)
-                .addGap(18, 18, 18)
-                .addComponent(btneliminar)
-                .addContainerGap(51, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEliminarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PanelEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PanelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelEliminarLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(btnregresareliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btneliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelEliminarLayout.createSequentialGroup()
+                        .addContainerGap(45, Short.MAX_VALUE)
+                        .addComponent(PanelEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         PanelEliminarLayout.setVerticalGroup(
             PanelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEliminarLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(PanelEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                .addGroup(PanelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnregresareliminar)
-                    .addComponent(btnlimpiareliminar)
-                    .addComponent(btneliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                .addGroup(PanelEliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnregresareliminar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btneliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50))
         );
 
@@ -527,7 +608,7 @@ public class vista_categorias extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -551,23 +632,26 @@ public class vista_categorias extends javax.swing.JFrame {
             String Nombre = txtnombreguardar.getText();
             String Descripcion = txtdescripcionguardar.getText();
             me.guardarCategoria(Nombre,Descripcion);
+            limpiar1();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnguardarActionPerformed
 
     private void btnlimpiarguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarguardarActionPerformed
         // TODO add your handling code here:
+        limpiar1();
     }//GEN-LAST:event_btnlimpiarguardarActionPerformed
 
     private void btnregresarguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarguardarActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_btnregresarguardarActionPerformed
 
     private void combobuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combobuscarActionPerformed
 
         try{
             String nombre = combobuscar.getSelectedItem().toString();
-            if(!nombre.equals("Click para ver las categorías")){
+            if(!nombre.equals("Seleccione")){
                 String datos [] = busq.BuscarCategoria(nombre);
 
                 txtidbuscar.setText(datos[0]);
@@ -584,6 +668,18 @@ public class vista_categorias extends javax.swing.JFrame {
     private void combomodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combomodificarActionPerformed
 
         // TODO add your handling code here:
+        try{
+            int id = Integer.parseInt(combomodificar.getSelectedItem().toString());
+            if(!combomodificar.getSelectedItem().toString().equals("Seleccione")){
+                String datos [] = busq.BuscarCategoria(id);
+
+                txtnombremodificar.setText(datos[1]);
+                txtdescripcionmodificar.setText(datos[2]);
+            }
+        }
+        catch(Exception x)
+        {
+        }
     }//GEN-LAST:event_combomodificarActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
@@ -593,11 +689,12 @@ public class vista_categorias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Rellene los espacios en blanco");
         }else
         {
-            String Nombre = combomodificar.getSelectedItem().toString();
+            int idca= Integer.parseInt(combomodificar.getSelectedItem().toString());
             String Nombre1 = txtnombremodificar.getText();
             String Descripcion = txtdescripcionmodificar.getText();
 
-            met.modificarCategoria(Nombre1,Descripcion);
+            met.modificarCategoria(Nombre1,Descripcion,idca);
+            limpiar3();
 
         }
         // TODO add your handling code here:
@@ -611,15 +708,38 @@ public class vista_categorias extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Rellene el campo a eliminar");
         }else
         {
-            int ID = Integer.parseInt(txtideliminar.getText());
-
-            el.eliminarClientes(ID);
+            int IDc = Integer.parseInt(txtideliminar.getText());
+            el.eliminarcategoria(IDc);
             txtideliminar.setText("");
-
         }
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btnregresarbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarbuscarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnregresarbuscarActionPerformed
+
+    private void btnregresarmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresarmodificarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnregresarmodificarActionPerformed
+
+    private void btnregresareliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregresareliminarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnregresareliminarActionPerformed
+
+    private void btnlimpiarmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarmodificarActionPerformed
+        // TODO add your handling code here:
+        limpiar3();
+    }//GEN-LAST:event_btnlimpiarmodificarActionPerformed
+
+    private void btnlimpiarbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarbuscarActionPerformed
+        // TODO add your handling code here:
+        limpiar2();
+    }//GEN-LAST:event_btnlimpiarbuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -662,7 +782,6 @@ public class vista_categorias extends javax.swing.JFrame {
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnlimpiarbuscar;
-    private javax.swing.JButton btnlimpiareliminar;
     private javax.swing.JButton btnlimpiarguardar;
     private javax.swing.JButton btnlimpiarmodificar;
     private javax.swing.JButton btnmodificar;

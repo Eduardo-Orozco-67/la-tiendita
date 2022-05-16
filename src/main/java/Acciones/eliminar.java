@@ -49,19 +49,18 @@ public class eliminar {
         }
     }
      
-     public void eliminarcategoria(String id_categoria){
+     public void eliminarcategoria(int id_categoria){
         try {
-
-            st=conexion.createStatement();
-            String sql= "delete from Categoria where id_categoria='"+id_categoria+"'; ";
+            Connection conexiion = c.conectar();
+            st=conexiion.createStatement();
+            String sql= "delete from categoria where id_categoria="+id_categoria+"; ";
             st.executeUpdate(sql);
             st.close();
-            conexion.close();
             JOptionPane.showMessageDialog(null, "Registro eliminado correctamente","Eliminado",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            
+              JOptionPane.showMessageDialog(null, "Error al eliminar registro " + e, "Error",JOptionPane.ERROR_MESSAGE);
         }
-            JOptionPane.showMessageDialog(null, "Error al eliminar registro ", "Error",JOptionPane.ERROR_MESSAGE);
+          
         }
      
      public void eliminarproducto(String nom)

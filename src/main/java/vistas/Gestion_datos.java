@@ -25,6 +25,8 @@ public class Gestion_datos extends javax.swing.JFrame {
     }
     
     Inventario inv = new Inventario ();
+    VistaClientes vc = new VistaClientes();
+    vista_categorias vsc = new vista_categorias();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +41,7 @@ public class Gestion_datos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btcliente = new javax.swing.JButton();
         btinventario = new javax.swing.JButton();
+        btcat = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         regresarp = new javax.swing.JButton();
 
@@ -52,6 +55,11 @@ public class Gestion_datos extends javax.swing.JFrame {
 
         btcliente.setText("CLIENTE");
         btcliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btcliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btclienteActionPerformed(evt);
+            }
+        });
 
         btinventario.setText("INVENTARIO");
         btinventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -61,16 +69,26 @@ public class Gestion_datos extends javax.swing.JFrame {
             }
         });
 
+        btcat.setText("CATEGORIAS");
+        btcat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btcat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btcatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(27, 27, 27)
                 .addComponent(btcliente)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(btinventario)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btcat)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,11 +96,12 @@ public class Gestion_datos extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btcliente)
-                    .addComponent(btinventario))
+                    .addComponent(btinventario)
+                    .addComponent(btcat))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 360, -1));
 
         jLabel1.setFont(new java.awt.Font("Elephant", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -91,6 +110,11 @@ public class Gestion_datos extends javax.swing.JFrame {
 
         regresarp.setText("REGRESAR");
         regresarp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        regresarp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarpActionPerformed(evt);
+            }
+        });
         jPanel1.add(regresarp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,6 +143,7 @@ public class Gestion_datos extends javax.swing.JFrame {
         {
             btinventario.setEnabled(false);
             btcliente.setEnabled(false);
+            btcat.setEnabled(false);
             regresarp.setEnabled(false);            
             
             inv.setVisible(true);            
@@ -128,12 +153,14 @@ public class Gestion_datos extends javax.swing.JFrame {
                public void windowClosing(WindowEvent we){
                     btinventario.setEnabled(true);
                     btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
                     regresarp.setEnabled(true);
                }               
                public void windowClosed(WindowEvent we)
                {
                     btinventario.setEnabled(true);
                     btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
                     regresarp.setEnabled(true);
                }
            });
@@ -142,6 +169,71 @@ public class Gestion_datos extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btinventarioActionPerformed
+
+    private void regresarpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarpActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_regresarpActionPerformed
+
+    private void btclienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btclienteActionPerformed
+        // TODO add your handling code here:
+         if(evt.getSource() ==btcliente)
+        {
+            btinventario.setEnabled(false);
+            btcliente.setEnabled(false);
+            btcat.setEnabled(false);
+            regresarp.setEnabled(false);            
+            
+            vc.setVisible(true);            
+            
+            vc.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+               }               
+               public void windowClosed(WindowEvent we)
+               {
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+               }
+           });
+        }
+    }//GEN-LAST:event_btclienteActionPerformed
+
+    private void btcatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btcatActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() ==btcat)
+        {
+            btinventario.setEnabled(false);
+            btcliente.setEnabled(false);
+            btcat.setEnabled(false);
+            regresarp.setEnabled(false);            
+            
+            vsc.setVisible(true);            
+            
+            vsc.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+               }               
+               public void windowClosed(WindowEvent we)
+               {
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+               }
+           });
+        }
+    }//GEN-LAST:event_btcatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,14 +263,11 @@ public class Gestion_datos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Gestion_datos().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btcat;
     private javax.swing.JButton btcliente;
     private javax.swing.JButton btinventario;
     private javax.swing.JLabel jLabel1;
