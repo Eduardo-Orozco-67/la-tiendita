@@ -16,6 +16,7 @@ Otra necesidad es conocer los montos de ventas, ocupan que se lleve un control p
 ## Instalacion
 
 descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
+
 ![App Screenshot](https://br.atsit.in/es/wp-content/uploads/2021/06/como-descargar-archivos-y-ver-codigo-desde-github-9.png)
 
 ## LENGUAJES USADOS
