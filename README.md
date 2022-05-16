@@ -10,7 +10,7 @@ Otra necesidad es conocer los montos de ventas, ocupan que se lleve un control p
 - [@Eduardo-Orozco-67](https://github.com/Eduardo-Orozco-67)
 - [@EmiliaZul](https://github.com/EmiliaZul)
 - [@SamuelSanchez17](https://github.com/SamuelSanchez17)
-- [@B1PO](https://github.com/B1PO1)
+- [@B1PO](https://github.com/B1PO)
 
 
 ## Instalacion
