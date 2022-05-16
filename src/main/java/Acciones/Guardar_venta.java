@@ -70,7 +70,7 @@ public class Guardar_venta {
         return !respuesta;
     }
     
-    public void guardarClientes(String nombre,String rfc,int telefono,String direccion)
+    public void guardarClientes(String nombre,String rfc,long telefono,String direccion)
     {
         try{
             st=conexion.createStatement();
