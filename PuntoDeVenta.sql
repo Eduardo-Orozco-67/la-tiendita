@@ -9,7 +9,7 @@ create table Cliente (
     ID_cliente integer,
     nombre varchar not null,
     RFC varchar not null,
-    telefono integer not null,
+    telefono bigint not null,
     direccion varchar not null,
     CONSTRAINT cliente_pkey PRIMARY KEY (ID_cliente)
 ); 
@@ -27,7 +27,7 @@ create table Proveedor (
     ID_proveedor integer not null, 
     RFC varchar not null,
     nombre varchar not null,
-    telefono integer not null,
+    telefono bigint not null,
     direccion varchar,
     CONSTRAINT Proveedor_pkey primary key (ID_proveedor)
 );
@@ -49,6 +49,8 @@ create table Producto (
     precio numeric not null,
     descuento numeric not null,
     stock integer not null,
+    fecha  date not null,
+    stock_inicial integer,
     CONSTRAINT producto_pkey primary key (ID_producto),
     CONSTRAINT producto_prov_fkey foreign key (ID_proveedor) references Proveedor (ID_proveedor),
     CONSTRAINT producto_categ_fkey foreign key(ID_categoria)

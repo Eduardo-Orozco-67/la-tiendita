@@ -33,12 +33,12 @@ public class eliminar {
         }
     }
     
-     public void eliminarproveedor(int idp)
+     public void eliminarproveedor(String rfcwe)
     {
           try {
             Connection conexiion = c.conectar();
             st=conexiion.createStatement();
-            String sql= "DELETE FROM proveedor WHERE id_proveedor ="+idp+";";
+            String sql= "DELETE FROM proveedor WHERE rfc ='"+rfcwe+"';";
             st.execute(sql);
             st.close();
             JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
@@ -48,5 +48,37 @@ public class eliminar {
             JOptionPane.showMessageDialog(null, "Error al eliminar registro " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+     
+     public void eliminarcategoria(String id_categoria){
+        try {
+
+            st=conexion.createStatement();
+            String sql= "delete from Categoria where id_categoria='"+id_categoria+"'; ";
+            st.executeUpdate(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente","Eliminado",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            
+        }
+            JOptionPane.showMessageDialog(null, "Error al eliminar registro ", "Error",JOptionPane.ERROR_MESSAGE);
+        }
+     
+     public void eliminarproducto(String nom)
+    {
+          try {
+            Connection conexiion = c.conectar();
+            st=conexiion.createStatement();
+            String sql= "DELETE FROM producto WHERE nombre ='"+nom+"';";
+            st.execute(sql);
+            st.close();
+            JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+            //mensajes de eliminacion
+            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente", "Eliminado", JOptionPane.INFORMATION_MESSAGE);
+        } catch (HeadlessException | SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar registro " + e, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     }
     

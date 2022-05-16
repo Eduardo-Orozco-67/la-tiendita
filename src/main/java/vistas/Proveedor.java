@@ -28,6 +28,7 @@ public class Proveedor extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         buscar_rfcs();
+        buscar_ids();
     }
     ImageIcon iconobtn = new ImageIcon("src/main/java/Iconos/disco-flexible.png");
     ImageIcon iconobtn2 = new ImageIcon("src/main/java/Iconos/eliminar.png");
@@ -45,6 +46,18 @@ public class Proveedor extends javax.swing.JFrame {
          
         for(String i:barras){
            rfcpcom.addItem(i);
+           rfcpcom1.addItem(i);
+        }
+     }
+     
+     public void buscar_ids(){
+        rfcpcom2.removeAllItems();
+        rfcpcom2.addItem("Seleccione");
+         c = new Conecction().conectar();
+         String []barras = busq.veridpro();
+         
+        for(String i:barras){
+           rfcpcom2.addItem(i);
            
         }
         
@@ -86,6 +99,19 @@ public class Proveedor extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         IDP = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        w1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        w2 = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        w3 = new javax.swing.JTextField();
+        w4 = new javax.swing.JTextField();
+        editar = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        rfcpcom2 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
@@ -249,7 +275,7 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("AGREGAR", jPanel1);
@@ -408,22 +434,179 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("BUSCAR", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(148, 180, 159));
 
+        jPanel10.setBackground(new java.awt.Color(255, 251, 223));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setText("Nombre:");
+
+        w1.setBackground(new java.awt.Color(76, 80, 82));
+        w1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        w1.setForeground(new java.awt.Color(255, 255, 204));
+        w1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        w1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w1ActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setText("R  F  C:");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setText("Telefono:");
+
+        w2.setBackground(new java.awt.Color(76, 80, 82));
+        w2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        w2.setForeground(new java.awt.Color(255, 255, 204));
+        w2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        w2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w2ActionPerformed(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setText("Direccion:");
+
+        w3.setBackground(new java.awt.Color(76, 80, 82));
+        w3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        w3.setForeground(new java.awt.Color(255, 255, 204));
+        w3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        w3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w3ActionPerformed(evt);
+            }
+        });
+
+        w4.setBackground(new java.awt.Color(76, 80, 82));
+        w4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        w4.setForeground(new java.awt.Color(255, 255, 204));
+        w4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        w4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                w4ActionPerformed(evt);
+            }
+        });
+
+        editar.setBackground(new java.awt.Color(102, 102, 102));
+        editar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        editar.setForeground(new java.awt.Color(255, 255, 255));
+        editar.setIcon( iconobtn);
+        editar.setText("Editar");
+        editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
+            }
+        });
+
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton9.setText("Regresar");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("ID :");
+
+        rfcpcom2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rfcpcom2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        rfcpcom2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rfcpcom2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rfcpcom2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(23, 23, 23)
+                        .addComponent(w2))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(w3)
+                            .addComponent(w4, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel21))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(w1)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(rfcpcom2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(rfcpcom2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(w1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(w2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(w3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel24)
+                            .addComponent(w4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addComponent(jButton9)
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGap(20, 59, Short.MAX_VALUE)
+                        .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("EDITAR", jPanel4);
@@ -575,7 +758,7 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ELIMINAR", jPanel2);
@@ -673,25 +856,20 @@ public class Proveedor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:                    
          
-//            int ID = Integer.parseInt(rfcpe1.getText());
-//            
-//            int d = JOptionPane.showConfirmDialog(null, " ¡¿Seguro que desea eliminar este registro?!", "Cita", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-//            if (d == JOptionPane.YES_OPTION) 
-//            {
-//                e.eliminarproveedor(ID);
-//                System.out.println(ID);
-//                nomb1.setText("");
-//                telb1.setText("");
-//                dirb1.setText("");
-//                
-//            } else 
-//            {
-//                JOptionPane.showMessageDialog(null, "No se Elimino nada!!!", "mensaje", JOptionPane.INFORMATION_MESSAGE);
-//            }
-
+            String rfcelim = rfcpcom1.getSelectedItem().toString();
         
-       
-
+            int d = JOptionPane.showConfirmDialog(null, " ¡¿Seguro que desea eliminar este registro?!", "Cita", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if (d == JOptionPane.YES_OPTION) 
+            {
+                e.eliminarproveedor(rfcelim);
+                nomb1.setText("");
+                telb1.setText("");
+                dirb1.setText("");
+                
+            } else 
+            {
+                JOptionPane.showMessageDialog(null, "No se Elimino nada!!!", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPActionPerformed
@@ -700,8 +878,47 @@ public class Proveedor extends javax.swing.JFrame {
 
     private void rfcpcom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcpcom1ActionPerformed
         // TODO add your handling code here:
-        
+        try{                       
+            String rfcp1 = rfcpcom1.getSelectedItem().toString();
+        if(rfcpcom1.equals("Seleccione")){  
+            nomb1.setText("");
+            telb1.setText("");
+            dirb1.setText("");
+        } else {
+            c = new Conecction().conectar();
+            String datos [] = busq.verproveedor(rfcp1);
+            nomb1.setText(datos[1]);
+            telb1.setText(datos[2]);
+            dirb1.setText(datos[3]);
+            }
+        }catch(Exception x){
+            
+        }
     }//GEN-LAST:event_rfcpcom1ActionPerformed
+
+    private void w1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w1ActionPerformed
+
+    private void w2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w2ActionPerformed
+
+    private void w3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w3ActionPerformed
+
+    private void w4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_w4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_w4ActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarActionPerformed
+
+    private void rfcpcom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcpcom2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rfcpcom2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -743,11 +960,13 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JTextField dirb;
     private javax.swing.JTextField dirb1;
     private javax.swing.JTextField direpro;
+    private javax.swing.JButton editar;
     private javax.swing.JButton guaradrpro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -756,12 +975,18 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -774,9 +999,14 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JTextField nombrepro;
     private javax.swing.JComboBox<String> rfcpcom;
     private javax.swing.JComboBox<String> rfcpcom1;
+    private javax.swing.JComboBox<String> rfcpcom2;
     private javax.swing.JTextField rfcpro;
     private javax.swing.JTextField telb;
     private javax.swing.JTextField telb1;
     private javax.swing.JTextField telepro;
+    private javax.swing.JTextField w1;
+    private javax.swing.JTextField w2;
+    private javax.swing.JTextField w3;
+    private javax.swing.JTextField w4;
     // End of variables declaration//GEN-END:variables
 }

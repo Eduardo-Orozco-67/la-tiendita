@@ -341,6 +341,34 @@ public class Buscar {
         return x;
     }
     
+    public String [] veridpro(){
+        String sql = "select id_proveedor from proveedor;";      
+        String []x = new String[1];
+        try{
+           st=conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);   
+           res=st.executeQuery(sql);
+           res.last();
+           int filas = res.getRow();
+           res.beforeFirst(); 
+           x = new String[filas];
+           filas = 0;
+           while(res.next()){
+               x[filas]=res.getString("id_proveedor");     
+               filas++;
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
     public String [] vercatcom(){
         String sql = "select nombre from categoria;";      
         String []x = new String[1];

@@ -52,20 +52,29 @@ public class principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPasswordField1 = new javax.swing.JPasswordField();
+        jButton13 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
         jPanel1 = new fondo_panel();
-        botonInv = new javax.swing.JButton();
-        btncat = new javax.swing.JButton();
-        Venta = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
+
+        jButton13.setBackground(new java.awt.Color(52, 101, 109));
+        jButton13.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 251, 223));
+        jButton13.setText("ADMINISTRADOR");
+        jButton13.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13jButton5ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PRINCIPAL PUNTO DE VENTA");
@@ -111,33 +120,12 @@ public class principal extends javax.swing.JFrame {
         jButton12.setBackground(new java.awt.Color(52, 101, 109));
         jButton12.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 251, 223));
-        jButton12.setText("Producto");
+        jButton12.setText("ADMINISTRADOR");
         jButton12.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton13.setBackground(new java.awt.Color(52, 101, 109));
-        jButton13.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 251, 223));
-        jButton13.setText("Proveedores");
-        jButton13.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setBackground(new java.awt.Color(52, 101, 109));
-        jButton14.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(255, 251, 223));
-        jButton14.setText("Clientes");
-        jButton14.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14jButton5ActionPerformed(evt);
             }
         });
 
@@ -152,42 +140,21 @@ public class principal extends javax.swing.JFrame {
             .addGap(0, 431, Short.MAX_VALUE)
         );
 
-        botonInv.setBackground(new java.awt.Color(52, 101, 109));
-        botonInv.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        botonInv.setForeground(new java.awt.Color(255, 251, 223));
-        botonInv.setText("Inventario");
-        botonInv.setBorder(new javax.swing.border.MatteBorder(null));
-        botonInv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonInvjButton5ActionPerformed(evt);
-            }
-        });
-
-        btncat.setBackground(new java.awt.Color(52, 101, 109));
-        btncat.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        btncat.setForeground(new java.awt.Color(255, 251, 223));
-        btncat.setText("Categorias");
-        btncat.setBorder(new javax.swing.border.MatteBorder(null));
-        btncat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btncatjButton5ActionPerformed(evt);
-            }
-        });
-
-        Venta.setBackground(new java.awt.Color(52, 101, 109));
-        Venta.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
-        Venta.setForeground(new java.awt.Color(255, 251, 223));
-        Venta.setText("VENTA");
-        Venta.setBorder(new javax.swing.border.MatteBorder(null));
-        Venta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VentajButton5ActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Bodoni MT Black", 2, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 68, 67));
         jLabel3.setText("Un placer atenderle");
+
+        jButton14.setBackground(new java.awt.Color(52, 101, 109));
+        jButton14.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
+        jButton14.setForeground(new java.awt.Color(255, 251, 223));
+        jButton14.setText("CAJERO(A)");
+        jButton14.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -195,33 +162,21 @@ public class principal extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(Venta, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(botonInv, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btncat, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)))
+                                .addGap(110, 110, 110)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(24, 24, 24)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -237,17 +192,10 @@ public class principal extends javax.swing.JFrame {
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btncat, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botonInv, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Venta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(22, 22, 22))))
@@ -318,18 +266,6 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14jButton5ActionPerformed
 
-    private void botonInvjButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInvjButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonInvjButton5ActionPerformed
-
-    private void btncatjButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncatjButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btncatjButton5ActionPerformed
-
-    private void VentajButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VentajButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_VentajButton5ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -366,9 +302,6 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Venta;
-    private javax.swing.JButton botonInv;
-    private javax.swing.JButton btncat;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
