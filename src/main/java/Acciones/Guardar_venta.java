@@ -84,6 +84,61 @@ public class Guardar_venta {
         }
     }
     
+    public boolean guardaproveedor(String rfc, String nombre,long telefono,String direccion)
+    {
+        String sql="insert into proveedor (rfc, nombre, telefono, direccion) values('"+rfc+"','"+nombre+"', '"+telefono+"', '"+direccion+"');";
+        boolean respuesta = true;
+        try{
+            st=conexion.createStatement();
+            respuesta=st.execute(sql);
+            JOptionPane.showMessageDialog(null, "Registro exitoso", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                st.close();
+            }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return !respuesta;
+    }
     
+    public boolean guardaproducto(int num_barras, int id_proveedor, int id_categoria, String nombre, int anaquel, double precio, double descuento, int stock, String fecha, int stock_inicial )
+    {
+        String sql="insert into producto(num_barras,id_proveedor,id_categoria,nombre,anaquel,precio,descuento,stock,fecha,stock_inicial) values('"+num_barras+"','"+id_proveedor+"', '"+id_categoria+"', '"+nombre+"','"+anaquel+"','"+precio+"','"+descuento+"','"+stock+"','"+fecha+"','"+stock_inicial+"');";
+        boolean respuesta = true;
+        try{
+            st=conexion.createStatement();
+            respuesta=st.execute(sql);
+            JOptionPane.showMessageDialog(null, "Registro exitoso", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            try{
+                st.close();
+            }catch(SQLException e){
+                 JOptionPane.showMessageDialog(null, "Registro fallido " + e, "mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        return !respuesta;
+    }
     
+     public void guardarCategoria(String Nombre, String Descripcion)
+    {
+         try {
+            
+            st = conexion.createStatement();
+            String sql = "insert into categoria (nombre, descripcion) values('" + Nombre + "','" + Descripcion + "');";
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            
+            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+         catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    
+    }   
 }

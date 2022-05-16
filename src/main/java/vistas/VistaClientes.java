@@ -9,7 +9,7 @@ import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Acciones.eliminar;
 import Connection.Conecction;
-import base.modificar;
+import Acciones.modificar;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -393,6 +393,12 @@ public class VistaClientes extends javax.swing.JFrame {
 
         jLabel13.setText("ID CLIENTE:");
 
+        TxtEliminarID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtEliminarIDActionPerformed(evt);
+            }
+        });
+
         BtnEliminar.setText("Eliminar");
         BtnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -715,6 +721,10 @@ public class VistaClientes extends javax.swing.JFrame {
             limpiar_articulos2();
         }
     }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void TxtEliminarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEliminarIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtEliminarIDActionPerformed
 
     
     /**
