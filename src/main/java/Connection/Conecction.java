@@ -28,7 +28,7 @@ public class Conecction {
             //manejo del Driver
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, usuario, contraseña);
-            System.out.println("BD CONECTADA");
+//            System.out.println("BD CONECTADA");
         } catch (ClassNotFoundException | SQLException e) {
             //excepcion sql
             JOptionPane.showMessageDialog(null, "Error en su conexion " + e, "Error", JOptionPane.ERROR_MESSAGE);

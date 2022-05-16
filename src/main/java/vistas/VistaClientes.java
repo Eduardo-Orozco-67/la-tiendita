@@ -9,7 +9,7 @@ import Acciones.Buscar;
 import Acciones.Guardar_venta;
 import Acciones.eliminar;
 import Connection.Conecction;
-import base.modificar;
+import Acciones.modificar;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
