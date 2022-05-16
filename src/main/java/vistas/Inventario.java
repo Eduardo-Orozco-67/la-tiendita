@@ -19,6 +19,7 @@ public class Inventario extends javax.swing.JFrame {
      * Creates new form Inventario
      */
     reportes rep = new reportes();
+    producto p = new producto();
     
     public Inventario() {
         initComponents();
@@ -51,6 +52,11 @@ public class Inventario extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(204, 255, 204));
 
         productos.setText("PRODUCTOS");
+        productos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productosActionPerformed(evt);
+            }
+        });
 
         inventariobt.setText("REPORTES");
         inventariobt.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +99,7 @@ public class Inventario extends javax.swing.JFrame {
                 regresarinvActionPerformed(evt);
             }
         });
-        jPanel1.add(regresarinv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel1.add(regresarinv, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +156,33 @@ public class Inventario extends javax.swing.JFrame {
            });
         }
     }//GEN-LAST:event_inventariobtActionPerformed
+
+    private void productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productosActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == productos)
+        {
+            inventariobt.setEnabled(false);
+            productos.setEnabled(false);
+            regresarinv.setEnabled(false);            
+            
+            p.setVisible(true);            
+            
+            p.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    inventariobt.setEnabled(true);
+                    productos.setEnabled(true);
+                    regresarinv.setEnabled(true);
+               }               
+               public void windowClosed(WindowEvent we)
+               {
+                    inventariobt.setEnabled(true);
+                    productos.setEnabled(true);
+                    regresarinv.setEnabled(true);
+               }
+           });
+        }
+    }//GEN-LAST:event_productosActionPerformed
 
     /**
      * @param args the command line arguments

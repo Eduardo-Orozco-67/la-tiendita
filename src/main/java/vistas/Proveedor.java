@@ -32,9 +32,12 @@ public class Proveedor extends javax.swing.JFrame {
     }
     ImageIcon iconobtn = new ImageIcon("src/main/java/Iconos/disco-flexible.png");
     ImageIcon iconobtn2 = new ImageIcon("src/main/java/Iconos/eliminar.png");
+    ImageIcon iconobtn3 = new ImageIcon("src/main/java/Iconos/editar-informacion.png");
+    
     Buscar busq = new Buscar();
     Guardar_venta g = new Guardar_venta();
     eliminar e = new eliminar();
+    modificar m = new modificar();
     
     
         
@@ -63,6 +66,14 @@ public class Proveedor extends javax.swing.JFrame {
         
      }
 
+     
+     public void limpiar1()
+     {
+         w1.setText("");
+         w2.setText("");
+         w3.setText("");
+        w4.setText("");
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -499,7 +510,7 @@ public class Proveedor extends javax.swing.JFrame {
         editar.setBackground(new java.awt.Color(102, 102, 102));
         editar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         editar.setForeground(new java.awt.Color(255, 255, 255));
-        editar.setIcon( iconobtn);
+        editar.setIcon( iconobtn3);
         editar.setText("Editar");
         editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editar.addActionListener(new java.awt.event.ActionListener() {
@@ -541,7 +552,7 @@ public class Proveedor extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel23))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(w3)
@@ -880,7 +891,7 @@ public class Proveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{                       
             String rfcp1 = rfcpcom1.getSelectedItem().toString();
-        if(rfcpcom1.equals("Seleccione")){  
+        if(rfcp1.equals("Seleccione")){  
             nomb1.setText("");
             telb1.setText("");
             dirb1.setText("");
@@ -914,10 +925,41 @@ public class Proveedor extends javax.swing.JFrame {
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         // TODO add your handling code here:
+        if(w1.getText().equals("") || w2.getText().equals("") || w3.getText().equals("") || w4.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos");
+        }else
+        {
+            String idd = rfcpcom2.getSelectedItem().toString();
+            int idd1 = Integer.parseInt(idd);
+            long Telefono = Long.parseLong(w3.getText());
+            String Nombre = w1.getText();
+            String Direccion = w4.getText();
+            String rfcee = w2.getText();
+            m.modificarproveedor(idd1, Nombre, rfcee, Telefono, Direccion);
+            limpiar1();
+        }
     }//GEN-LAST:event_editarActionPerformed
 
     private void rfcpcom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcpcom2ActionPerformed
         // TODO add your handling code here:
+        try{                       
+           String idd = rfcpcom2.getSelectedItem().toString();
+           int idd1 = Integer.parseInt(idd);
+        if( !idd.equals("Seleccione")){
+            c = new Conecction().conectar();
+            String datos [] = busq.verproveedor2(idd1);
+            w1.setText(datos[1]);
+            w2.setText(datos[0]);
+            w3.setText(datos[2]);
+            w4.setText(datos[3]);
+        } else {
+            limpiar1();
+        }
+        }catch(Exception x){
+            
+        }
+        
     }//GEN-LAST:event_rfcpcom2ActionPerformed
 
     /**

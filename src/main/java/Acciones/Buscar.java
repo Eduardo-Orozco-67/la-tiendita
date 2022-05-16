@@ -369,6 +369,32 @@ public class Buscar {
         return x;
     }
     
+    public String [] verproveedor2(int rfcp){
+        String sql = "select * from proveedor where id_proveedor= '"+rfcp+"' ;";      
+        String []x = new String[4];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("rfc");
+               x[1]=res.getString("nombre");
+               x[2]=res.getString("telefono");
+               x[3]=res.getString("direccion");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
+    
     public String [] vercatcom(){
         String sql = "select nombre from categoria;";      
         String []x = new String[1];
@@ -479,8 +505,64 @@ public class Buscar {
         return x;
     }
     
+     public String [] verprod(int idp){
+        String sql = "select * from producto where id_producto = "+idp+";";      
+        String []x = new String[9];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next()){
+               x[0]=res.getString("nombre");
+               x[1]=res.getString("num_barras");
+               x[2]=res.getString("id_proveedor");
+               x[3]=res.getString("id_categoria");
+               x[4]=res.getString("anaquel");
+               x[5]=res.getString("precio");
+               x[6]=res.getString("descuento");
+               x[7]=res.getString("stock");
+               x[8]=res.getString("fecha");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+        }
+        return x;
+    }
+     
+     public String [] veridprodu(){
+        String sql = "select id_producto from producto;";      
+        String []x = new String[1];
+        try{
+           st=conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);   
+           res=st.executeQuery(sql);
+           res.last();
+           int filas = res.getRow();
+           res.beforeFirst(); 
+           x = new String[filas];
+           filas = 0;
+           while(res.next()){
+               x[filas]=res.getString("id_producto");     
+               filas++;
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+        }
+        return x;
+    }
+    
     public String [] BuscarCategoria(String nombre){
-        String sql = "select nombre, telefono, direccion from cliente where nombre = '"+nombre+"' ;";      
+        String sql = "select * from categoria where nombre = '"+nombre+"' ;";      
         String []x = new String[3];
         try{
            st=conexion.createStatement();   
@@ -504,5 +586,55 @@ public class Buscar {
         return x;
     }
     
+    public String [] veridcategoria(){
+        String sql = "select id_categoria from categoria;";      
+        String []x = new String[1];
+        try{
+           st=conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);   
+           res=st.executeQuery(sql);
+           res.last();
+           int filas = res.getRow();
+           res.beforeFirst(); 
+           x = new String[filas];
+           filas = 0;
+           while(res.next()){
+               x[filas]=res.getString("id_categoria");     
+               filas++;
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+        }
+        return x;
+    }
     
+     public String [] BuscarCategoria(int id){
+        String sql = "select * from categoria where id_categoria = "+id+" ;";      
+        String []x = new String[3];
+        try{
+           st=conexion.createStatement();   
+           res=st.executeQuery(sql);
+           while(res.next())
+           {
+               x[0]=res.getString("id_categoria");
+               x[1]=res.getString("nombre");
+               x[2]=res.getString("descripcion");
+           }  
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(null,e.getMessage() );
+           System.out.println(e.getMessage());
+        }finally{
+            try {
+                st.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage() );
+            }
+        }
+        return x;
+    }
 }

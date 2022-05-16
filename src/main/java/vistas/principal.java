@@ -27,6 +27,9 @@ public class principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
+    ImageIcon iconobtn = new ImageIcon("src/main/java/Iconos/administracion.png");
+    ImageIcon iconobtn2 = new ImageIcon("src/main/java/Iconos/cajero.png");
+    
     class fondo_panel extends JPanel
     {
         private Image imagen;
@@ -42,6 +45,8 @@ public class principal extends javax.swing.JFrame {
     }
 
     producto p = new producto();
+    Venta v = new Venta();
+    Gestion_datos gd = new Gestion_datos();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,6 +125,7 @@ public class principal extends javax.swing.JFrame {
         jButton12.setBackground(new java.awt.Color(52, 101, 109));
         jButton12.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 251, 223));
+        jButton12.setIcon(iconobtn);
         jButton12.setText("ADMINISTRADOR");
         jButton12.setBorder(new javax.swing.border.MatteBorder(null));
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -147,6 +153,7 @@ public class principal extends javax.swing.JFrame {
         jButton14.setBackground(new java.awt.Color(52, 101, 109));
         jButton14.setFont(new java.awt.Font("SansSerif", 3, 18)); // NOI18N
         jButton14.setForeground(new java.awt.Color(255, 251, 223));
+        jButton14.setIcon(iconobtn2);
         jButton14.setText("CAJERO(A)");
         jButton14.setBorder(new javax.swing.border.MatteBorder(null));
         jButton14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -162,9 +169,6 @@ public class principal extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -172,11 +176,15 @@ public class principal extends javax.swing.JFrame {
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGap(110, 110, 110)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(24, 24, 24)))
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
+                        .addGap(61, 61, 61)))
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -234,9 +242,9 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        p.setVisible(true);
+        gd.setVisible(true);
         this.dispose();
-        p.addWindowListener(new WindowAdapter(){
+        gd.addWindowListener(new WindowAdapter(){
                @Override
                public void windowClosing(WindowEvent we){
                    setVisible(true);
@@ -264,6 +272,19 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton14jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14jButton5ActionPerformed
         // TODO add your handling code here:
+        v.setVisible(true);
+        this.dispose();
+        v.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                   setVisible(true);
+               }
+               
+               public void windowClosed(WindowEvent we){
+                   setVisible(true);
+               }
+              
+           });
     }//GEN-LAST:event_jButton14jButton5ActionPerformed
 
     /**
