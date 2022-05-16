@@ -23,7 +23,7 @@ CREATE PROCEDURE GuardarDetalle (IN vidventa INTEGER, IN vbarras INTEGER, IN vca
             Select into vreg1 * from producto where num_barras = vbarras for update;
             iF FOUND THEN
                 -- Validar que la cantidad ingresada sea igual o menor a la del stock del producto 
-                IF vcant <= vreg1.stock THEN
+                IF vcant < vreg1.stock THEN
                     --calcular el descuento por el producto 
                     vdesc:= ((vreg1.precio * vcant) * (vreg1.descuento)); -- (20*2) * 0.1 = 4 obtenemos el descuento                 
                     --calcular el monto por todas las unidades del producto
