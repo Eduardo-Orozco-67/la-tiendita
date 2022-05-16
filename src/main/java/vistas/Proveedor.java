@@ -8,12 +8,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 import Acciones.*;
+import Connection.Conecction;
+import java.sql.Connection;
 
 /**
  *
  * @author <Eduardo Orozco eduardo.orozco66@unach.mx>
  */
 public class Proveedor extends javax.swing.JFrame {
+
+    private Connection c;
 
     /**
      * Creates new form Proveedor
@@ -26,6 +30,7 @@ public class Proveedor extends javax.swing.JFrame {
         buscar_rfcs();
     }
     ImageIcon iconobtn = new ImageIcon("src/main/java/Iconos/disco-flexible.png");
+    ImageIcon iconobtn2 = new ImageIcon("src/main/java/Iconos/eliminar.png");
     Buscar busq = new Buscar();
     Guardar_venta g = new Guardar_venta();
     eliminar e = new eliminar();
@@ -35,6 +40,7 @@ public class Proveedor extends javax.swing.JFrame {
      public void buscar_rfcs(){
         rfcpcom.removeAllItems();
         rfcpcom.addItem("Seleccione");
+         c = new Conecction().conectar();
          String []barras = busq.verRfcp();
          
         for(String i:barras){
@@ -91,7 +97,7 @@ public class Proveedor extends javax.swing.JFrame {
         dirb1 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        rfcpe1 = new javax.swing.JTextField();
+        rfcpcom1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proveedor");
@@ -188,12 +194,11 @@ public class Proveedor extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(direpro))
+                        .addComponent(direpro, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                        .addComponent(guaradrpro, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(guaradrpro, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13)
@@ -225,8 +230,8 @@ public class Proveedor extends javax.swing.JFrame {
                     .addComponent(direpro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(guaradrpro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
+                    .addComponent(jButton8)
+                    .addComponent(guaradrpro, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -244,7 +249,7 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("AGREGAR", jPanel1);
@@ -403,7 +408,7 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("BUSCAR", jPanel3);
@@ -418,7 +423,7 @@ public class Proveedor extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 282, Short.MAX_VALUE)
+            .addGap(0, 275, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("EDITAR", jPanel4);
@@ -476,21 +481,26 @@ public class Proveedor extends javax.swing.JFrame {
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setText("Regresar");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(iconobtn2);
         jButton1.setText("Eliminar");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMaximumSize(new java.awt.Dimension(98, 26));
+        jButton1.setMinimumSize(new java.awt.Dimension(98, 26));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        rfcpe1.setBackground(new java.awt.Color(76, 80, 82));
-        rfcpe1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        rfcpe1.setForeground(new java.awt.Color(255, 255, 204));
-        rfcpe1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        rfcpe1.addActionListener(new java.awt.event.ActionListener() {
+        rfcpcom1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        rfcpcom1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        rfcpcom1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rfcpcom1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rfcpe1ActionPerformed(evt);
+                rfcpcom1ActionPerformed(evt);
             }
         });
 
@@ -502,31 +512,28 @@ public class Proveedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(rfcpe1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(91, 91, 91))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomb1)
-                        .addContainerGap())
-                    .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(telb1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(telb1))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dirb1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(dirb1))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(nomb1))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rfcpcom1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 101, Short.MAX_VALUE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jButton7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(97, 97, 97))))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,7 +541,7 @@ public class Proveedor extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(rfcpe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rfcpcom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -547,11 +554,11 @@ public class Proveedor extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(dirb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton7)
-                    .addComponent(jButton1))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -568,7 +575,7 @@ public class Proveedor extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ELIMINAR", jPanel2);
@@ -639,6 +646,7 @@ public class Proveedor extends javax.swing.JFrame {
             telb.setText("");
             dirb.setText("");
         } else {
+            c = new Conecction().conectar();
             String datos [] = busq.verproveedor(rfcp);
             IDP.setText(datos[0]);
             nomb.setText(datos[1]);
@@ -664,40 +672,36 @@ public class Proveedor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:                    
-         if(rfcpe1.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Rellene el campo a eliminar");
-        }else
-        {
-            int ID = Integer.parseInt(rfcpe1.getText());
-            
-            int d = JOptionPane.showConfirmDialog(null, " ¡¿Seguro que desea eliminar este registro?!", "Cita", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
-            if (d == JOptionPane.YES_OPTION) 
-            {
-                e.eliminarproveedor(ID);
-                System.out.println(ID);
-                nomb1.setText("");
-                telb1.setText("");
-                dirb1.setText("");
-                
-            } else 
-            {
-                JOptionPane.showMessageDialog(null, "No se Elimino nada!!!", "mensaje", JOptionPane.INFORMATION_MESSAGE);
-            }
-           
-        }
+         
+//            int ID = Integer.parseInt(rfcpe1.getText());
+//            
+//            int d = JOptionPane.showConfirmDialog(null, " ¡¿Seguro que desea eliminar este registro?!", "Cita", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+//            if (d == JOptionPane.YES_OPTION) 
+//            {
+//                e.eliminarproveedor(ID);
+//                System.out.println(ID);
+//                nomb1.setText("");
+//                telb1.setText("");
+//                dirb1.setText("");
+//                
+//            } else 
+//            {
+//                JOptionPane.showMessageDialog(null, "No se Elimino nada!!!", "mensaje", JOptionPane.INFORMATION_MESSAGE);
+//            }
+
         
        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void rfcpe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcpe1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rfcpe1ActionPerformed
-
     private void IDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IDPActionPerformed
+
+    private void rfcpcom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfcpcom1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_rfcpcom1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -769,7 +773,7 @@ public class Proveedor extends javax.swing.JFrame {
     private javax.swing.JTextField nomb1;
     private javax.swing.JTextField nombrepro;
     private javax.swing.JComboBox<String> rfcpcom;
-    private javax.swing.JTextField rfcpe1;
+    private javax.swing.JComboBox<String> rfcpcom1;
     private javax.swing.JTextField rfcpro;
     private javax.swing.JTextField telb;
     private javax.swing.JTextField telb1;
