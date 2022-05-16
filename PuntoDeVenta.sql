@@ -17,7 +17,7 @@ create table Cliente (
 create table Compra_Venta (
     ID_venta integer,
     ID_cliente integer not null,
-    Fecha date not null constraint fecha_invalida check (fecha >= now()),
+    Fecha date not null ,
     monto_final float not null,
     CONSTRAINT compra_venta_pkey primary key (ID_venta),
     CONSTRAINT compra_venta_fkey foreign key (ID_cliente) references Cliente (ID_cliente)

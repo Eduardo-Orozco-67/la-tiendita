@@ -46,7 +46,7 @@ public class modificar {
       
       
       
-      public void modificarCliente(String nombre, int telefono, String direccion, String rfc)
+      public void modificarCliente(String nombre, long telefono, String direccion, String rfc)
       {
         try
         {

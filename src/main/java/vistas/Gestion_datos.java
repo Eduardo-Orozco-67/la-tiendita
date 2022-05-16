@@ -27,6 +27,7 @@ public class Gestion_datos extends javax.swing.JFrame {
     Inventario inv = new Inventario ();
     VistaClientes vc = new VistaClientes();
     vista_categorias vsc = new vista_categorias();
+    Proveedor pr = new Proveedor();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +43,7 @@ public class Gestion_datos extends javax.swing.JFrame {
         btcliente = new javax.swing.JButton();
         btinventario = new javax.swing.JButton();
         btcat = new javax.swing.JButton();
+        btnpro = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         regresarp = new javax.swing.JButton();
 
@@ -77,15 +79,26 @@ public class Gestion_datos extends javax.swing.JFrame {
             }
         });
 
+        btnpro.setText("PROVEEDOR");
+        btnpro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnpro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnproActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(btcliente)
-                .addGap(18, 18, 18)
-                .addComponent(btinventario)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnpro)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btcliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btinventario)))
                 .addGap(18, 18, 18)
                 .addComponent(btcat)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -98,7 +111,9 @@ public class Gestion_datos extends javax.swing.JFrame {
                     .addComponent(btcliente)
                     .addComponent(btinventario)
                     .addComponent(btcat))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnpro)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 360, -1));
@@ -144,7 +159,8 @@ public class Gestion_datos extends javax.swing.JFrame {
             btinventario.setEnabled(false);
             btcliente.setEnabled(false);
             btcat.setEnabled(false);
-            regresarp.setEnabled(false);            
+            regresarp.setEnabled(false);  
+            btnpro.setEnabled(false); 
             
             inv.setVisible(true);            
             
@@ -155,6 +171,7 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }               
                public void windowClosed(WindowEvent we)
                {
@@ -162,6 +179,7 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }
            });
         }
@@ -182,7 +200,8 @@ public class Gestion_datos extends javax.swing.JFrame {
             btinventario.setEnabled(false);
             btcliente.setEnabled(false);
             btcat.setEnabled(false);
-            regresarp.setEnabled(false);            
+            regresarp.setEnabled(false); 
+            btnpro.setEnabled(false); 
             
             vc.setVisible(true);            
             
@@ -193,6 +212,7 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }               
                public void windowClosed(WindowEvent we)
                {
@@ -200,6 +220,7 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }
            });
         }
@@ -212,7 +233,8 @@ public class Gestion_datos extends javax.swing.JFrame {
             btinventario.setEnabled(false);
             btcliente.setEnabled(false);
             btcat.setEnabled(false);
-            regresarp.setEnabled(false);            
+            regresarp.setEnabled(false);        
+            btnpro.setEnabled(false); 
             
             vsc.setVisible(true);            
             
@@ -223,6 +245,7 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }               
                public void windowClosed(WindowEvent we)
                {
@@ -230,10 +253,44 @@ public class Gestion_datos extends javax.swing.JFrame {
                     btcliente.setEnabled(true);
                     btcat.setEnabled(true);
                     regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
                }
            });
         }
     }//GEN-LAST:event_btcatActionPerformed
+
+    private void btnproActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnproActionPerformed
+        // TODO add your handling code here:
+         if(evt.getSource() ==btnpro)
+        {
+            btinventario.setEnabled(false);
+            btcliente.setEnabled(false);
+            btcat.setEnabled(false);
+            regresarp.setEnabled(false);
+            btnpro.setEnabled(false);                
+            
+            pr.setVisible(true);            
+            
+            pr.addWindowListener(new WindowAdapter(){
+               @Override
+               public void windowClosing(WindowEvent we){
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
+               }               
+               public void windowClosed(WindowEvent we)
+               {
+                    btinventario.setEnabled(true);
+                    btcliente.setEnabled(true);
+                    btcat.setEnabled(true);
+                    regresarp.setEnabled(true);
+                    btnpro.setEnabled(true); 
+               }
+           });
+        }
+    }//GEN-LAST:event_btnproActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,6 +327,7 @@ public class Gestion_datos extends javax.swing.JFrame {
     private javax.swing.JButton btcat;
     private javax.swing.JButton btcliente;
     private javax.swing.JButton btinventario;
+    private javax.swing.JButton btnpro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

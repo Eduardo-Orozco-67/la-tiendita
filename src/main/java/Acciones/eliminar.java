@@ -23,8 +23,9 @@ public class eliminar {
     public void eliminarClientes(int ID_cliente)
     {
         try{
-            st=conexion.createStatement();
-            String sql= "Delete from cliente where id_cliente = '"+ID_cliente+"' ";
+            Connection conexiion = c.conectar();
+            st=conexiion.createStatement();
+            String sql= "Delete from cliente where id_cliente = "+ID_cliente+" ";
             st.execute(sql);
             st.close();
             JOptionPane.showMessageDialog(null, "Eliminacion exitosa");

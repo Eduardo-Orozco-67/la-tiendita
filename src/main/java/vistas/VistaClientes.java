@@ -39,6 +39,7 @@ public class VistaClientes extends javax.swing.JFrame {
     public void limpiar_articulos(){
         comboCliente.removeAllItems();
         comboCliente.addItem("Seleccione");
+        c = new Conecction().conectar();
         String []barras = busq.ID_cliente();
         
         for(String i:barras){
@@ -56,7 +57,7 @@ public class VistaClientes extends javax.swing.JFrame {
         comboModificar.removeAllItems();
         comboModificar.addItem("Seleccione");
         String []barras = busq.verRfc();
-        
+        c = new Conecction().conectar();
         for(String i:barras){
             comboModificar.addItem(i);
             contador++;
@@ -606,7 +607,7 @@ public class VistaClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         }else
         {
-            int Telefono = Integer.parseInt(TxtTelefono.getText());
+            long Telefono = Long.parseLong(TxtTelefono.getText());
             String Nombre = TxtNombre.getText();
             String RFC = TxtRfc.getText();
             String Direccion = TxtDireccion.getText();
@@ -630,6 +631,7 @@ public class VistaClientes extends javax.swing.JFrame {
         try{                       
             String idcliente = comboCliente.getSelectedItem().toString();
         if(!idcliente.equals("Seleccione")){
+            c = new Conecction().conectar();
             String datos [] = busq.verCliente(idcliente);
             TxtNombre1.setText(datos[0]);
             TxtRfc1.setText(datos[1]);
@@ -671,6 +673,7 @@ public class VistaClientes extends javax.swing.JFrame {
 
     private void BtnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEliminarActionPerformed
         //Eliminar
+        c = new Conecction().conectar();
         if(TxtEliminarID.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Rellene el campo a eliminar");
@@ -694,6 +697,7 @@ public class VistaClientes extends javax.swing.JFrame {
         try{                       
             String rfc = comboModificar.getSelectedItem().toString();
         if(!rfc.equals("Seleccione")){
+            c = new Conecction().conectar();
             String datos [] = busq.verCliente2(rfc);
             TxtNombre2.setText(datos[0]);
             TxtTelefono2.setText(datos[1]);
@@ -707,13 +711,14 @@ public class VistaClientes extends javax.swing.JFrame {
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         //Boton de modificar
+        
         if(TxtNombre2.getText().equals("") || TxtTelefono2.getText().equals("") || TxtDireccion2.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Rellene todos los campos");
         }else
         {
             String rfc = comboModificar.getSelectedItem().toString();
-            int Telefono = Integer.parseInt(TxtTelefono2.getText());
+            long Telefono = Long.parseLong(TxtTelefono2.getText());
             String Nombre = TxtNombre2.getText();
             String Direccion = TxtDireccion2.getText();
             
