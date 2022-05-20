@@ -23,7 +23,7 @@ descargar el archivo .zip del repositorio para tener acceso a los arcvhivos
 
 ![Logo](https://1000marcas.net/wp-content/uploads/2020/11/Java-logo.png)
 ![Logo](https://blog.desafiolatam.com/wp-content/uploads/2018/05/sql-logo.png)
-![Logo](https://www.todopostgresql.com/wp-content/uploads/2018/09/cursoPlpgsql.png)
+![Logo](https://www.todopostgresql.com/wp-content/uploads/2021/09/PL_pgSQL-con-PostgreSQL-certificado.png)
 
 ## Motor de Bases de Datos Usado
 
